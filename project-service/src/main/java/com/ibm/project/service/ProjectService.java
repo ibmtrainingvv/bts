@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.ibm.project.entity.Project;
@@ -31,7 +32,4 @@ public class ProjectService {
 		projectRepository.save(project);
 	}
 
-	public void deleteProject(String orderId) {
-		projectRepository.deleteById(orderId);
-	}
 }
