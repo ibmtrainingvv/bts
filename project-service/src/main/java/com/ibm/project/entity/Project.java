@@ -4,8 +4,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class Project {
-	@NotNull
-	private int projectId ;
+	
+	private String id ;
 	@NotNull
 	@NotBlank
 	private String name;
@@ -15,11 +15,11 @@ public class Project {
 	private int testerId;
 	@NotNull
 	private int managerId;
-	public int getProjectId() {
-		return projectId;
+	public String getId() {
+		return id;
 	}
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
