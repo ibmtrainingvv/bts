@@ -1,50 +1,62 @@
 package com.ibm.project.entity;
 
+import java.util.ArrayList;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class Project {
-	
-	private String id ;
+
+	private String id;
 	@NotNull
 	@NotBlank
 	private String name;
 	@NotNull
-	private int developerId;
+	private ArrayList<String> developerId;
+
 	@NotNull
-	private int testerId;
+	private ArrayList<String> testerId;
 	@NotNull
-	private int managerId;
+	private String managerId;
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getDeveloperId() {
+
+	public ArrayList<String> getDeveloperId() {
 		return developerId;
 	}
-	public void setDeveloperId(int developerId) {
+
+	public void setDeveloperId(ArrayList<String> developerId) {
 		this.developerId = developerId;
 	}
-	public int getTesterId() {
+
+	public ArrayList<String> getTesterId() {
 		return testerId;
 	}
-	public void setTesterId(int testerId) {
+
+	public void setTesterId(ArrayList<String> testerId) {
 		this.testerId = testerId;
 	}
-	public int getManagerId() {
+
+	public String getManagerId() {
 		return managerId;
 	}
-	public void setManagerId(int managerId) {
+
+	public void setManagerId(String managerId) {
 		this.managerId = managerId;
 	}
-	
-	
+
 }
