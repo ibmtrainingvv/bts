@@ -5,29 +5,46 @@ import javax.validation.constraints.NotNull;
 
 public class Project {
 	@NotNull
-	private float tax;
+	private int projectId ;
 	@NotNull
 	@NotBlank
-	private String item;
+	private String name;
 	@NotNull
-	private int id;
-	public float getTax() {
-		return tax;
+	private int developerId;
+	@NotNull
+	private int testerId;
+	@NotNull
+	private int managerId;
+	public int getProjectId() {
+		return projectId;
 	}
-	public void setTax(float tax) {
-		this.tax = tax;
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
 	}
-	public String getItem() {
-		return item;
+	public String getName() {
+		return name;
 	}
-	public void setItem(String item) {
-		this.item = item;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getId() {
-		return id;
+	public int getDeveloperId() {
+		return developerId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setDeveloperId(int developerId) {
+		this.developerId = developerId;
 	}
+	public int getTesterId() {
+		return testerId;
+	}
+	public void setTesterId(int testerId) {
+		this.testerId = testerId;
+	}
+	public int getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(int managerId) {
+		this.managerId = managerId;
+	}
+	
 	
 }
