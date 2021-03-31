@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.ibm.bug.entity.Bug;
 import com.ibm.bug.service.BugService;
+import com.ibm.entity.Bug;
 
 public class BugController {
 	@Autowired

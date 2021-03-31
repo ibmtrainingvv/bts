@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ibm.bug.repo.BugRepository;
 import com.ibm.entity.Bug;
 
 @Service
@@ -14,19 +15,19 @@ public class BugService {
 	BugRepository bugRepository;
 
 	public String createBug(Bug bug) {
-		bug savedbug = bugRepository.save(bug);
+		Bug savedbug = bugRepository.save(bug);
 		return savedbug.getId();
 	}
 
-	public Optional<Bug> getbug(String orderId) {
+	public Optional<Bug> getBug(String orderId) {
 		return bugRepository.findById(orderId);
 	}
 
-	public List<Bug> getbugs() {
+	public List<Bug> getBugs() {
 		return bugRepository.findAll();
 	}
 
-	public void updatebug(Bug bug) {
+	public void updateBug(Bug bug) {
 		bugRepository.save(bug);
 	}
 
