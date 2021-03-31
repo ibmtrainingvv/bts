@@ -1,18 +1,28 @@
 package com.ibm.entity;
 
+import javax.validation.constraints.NotNull;
+
 public class Bug {
 	private String id;
+	@NotNull
 	private String name;
+	@NotNull
 	private PRIORITY priority;
+	@NotNull
 	private String projectId;
+	@NotNull
 	private String module;
+	@NotNull
 	private TYPE type;
+	@NotNull
 	private STATUS status;
 	private String buildVersion;
+	@NotNull
 	private SEVERITY severity;
 	private String developerId;
 	private String testerId;
 	private String product;
+	@NotNull
 	private String synopsis;
 	private String description;
 
