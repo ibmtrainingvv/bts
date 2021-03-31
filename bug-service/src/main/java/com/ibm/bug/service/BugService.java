@@ -5,19 +5,17 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.ibm.bug.entity.bug;
+import com.ibm.entity.Bug;
 
-	@Service
+@Service
 public class BugService {
 	@Autowired
 	BugRepository bugRepository;
 
-
 	public String createBug(Bug bug) {
 		bug savedbug = bugRepository.save(bug);
-				return savedbug.getId();
+		return savedbug.getId();
 	}
 
 	public Optional<Bug> getbug(String orderId) {
