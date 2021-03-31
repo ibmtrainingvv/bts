@@ -8,31 +8,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.bug.entity.bug;
-import com.ibm.bug.repo.bugRepository;
 
-@Service
-public class bugService {
+	@Service
+public class BugService {
 	@Autowired
-	bugRepository bugRepository;
+	BugRepository bugRepository;
 
-	@Transactional
-	public String createbug(bug bug) {
+
+	public String createBug(Bug bug) {
 		bug savedbug = bugRepository.save(bug);
-		if(bug != null) {
-			throw new RuntimeException();
-		}
-		return savedbug.getId();
+				return savedbug.getId();
 	}
 
-	public Optional<bug> getbug(String orderId) {
+	public Optional<Bug> getbug(String orderId) {
 		return bugRepository.findById(orderId);
 	}
 
-	public List<bug> getbugs() {
+	public List<Bug> getbugs() {
 		return bugRepository.findAll();
 	}
 
-	public void updatebug(bug bug) {
+	public void updatebug(Bug bug) {
 		bugRepository.save(bug);
 	}
 
