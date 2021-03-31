@@ -1,5 +1,7 @@
 package com.ibm.entity;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 public class Bug {
@@ -16,6 +18,7 @@ public class Bug {
 	private TYPE type;
 	@NotNull
 	private STATUS status;
+	private Date submitOn;
 	private String buildVersion;
 	@NotNull
 	private SEVERITY severity;
@@ -142,6 +145,14 @@ public class Bug {
 			throw new IndexOutOfBoundsException("Cannot be longer than 250 characters");
 		}
 		this.description = description;
+	}
+
+	public Date getSubmitOn() {
+		return submitOn;
+	}
+
+	public void setSubmitOn(Date submitOn) {
+		this.submitOn = submitOn;
 	}
 
 }
