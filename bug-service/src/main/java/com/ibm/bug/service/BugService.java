@@ -10,7 +10,7 @@ import com.ibm.bug.repo.BugRepository;
 import com.ibm.entity.Bug;
 
 @Service
-public class EmployeeService {
+public class BugService {
 
 	@Autowired
 	BugRepository bugRepository;
@@ -35,7 +35,7 @@ public class EmployeeService {
 	public void setBugRepository(BugRepository bugRepository) {
 		this.bugRepository = bugRepository;
 	}
-	
+
 	public BugRepository getBugRepository() {
 		return bugRepository;
 	}
