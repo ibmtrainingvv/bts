@@ -1,4 +1,4 @@
-package com.ibm.bug.service;
+package com.ibm.mail.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,11 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ibm.bug.repo.BugRepository;
 import com.ibm.entity.Bug;
+import com.ibm.mail.repo.BugRepository;
 
 @Service
-public class EmployeeService {
+public class MailService {
 
 	@Autowired
 	BugRepository bugRepository;
@@ -39,4 +39,5 @@ public class EmployeeService {
 	public BugRepository getBugRepository() {
 		return bugRepository;
 	}
+
 }
