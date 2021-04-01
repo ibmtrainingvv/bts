@@ -8,8 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import com.ibm.bug.repo.BugRepository;
-import com.ibm.entity.Bug;
+
+import com.ibm.mail.repo.BugRepository;
+
 
 public class DummyBugRepository implements BugRepository {
 
