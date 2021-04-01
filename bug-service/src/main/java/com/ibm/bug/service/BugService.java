@@ -11,6 +11,7 @@ import com.ibm.entity.Bug;
 
 @Service
 public class BugService {
+
 	@Autowired
 	BugRepository bugRepository;
 
@@ -19,8 +20,8 @@ public class BugService {
 		return savedbug.getId();
 	}
 
-	public Optional<Bug> getBug(String orderId) {
-		return bugRepository.findById(orderId);
+	public Optional<Bug> getBug(String bugId) {
+		return bugRepository.findById(bugId);
 	}
 
 	public List<Bug> getBugs() {
@@ -34,6 +35,8 @@ public class BugService {
 	public void setBugRepository(BugRepository bugRepository) {
 		this.bugRepository = bugRepository;
 	}
-
-
+	
+	public BugRepository getBugRepository() {
+		return bugRepository;
+	}
 }
