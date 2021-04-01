@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 
 import com.ibm.bug.repo.BugRepository;
 import com.ibm.entity.Bug;
+import com.ibm.entity.PRIORITY;
+import com.ibm.entity.SEVERITY;
 
 public class DummyBugRepository implements BugRepository {
 
@@ -89,7 +91,8 @@ public class DummyBugRepository implements BugRepository {
 	}
 
 	public Optional<Bug> findById(String arg0) {
-		// TODO Auto-generated method stub
+		Bug bug = new Bug();
+		bug.getId();
 		return null;
 	}
 

@@ -1,5 +1,8 @@
 package com.ibm.employee.entity;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class Employee {
@@ -7,9 +10,12 @@ public class Employee {
 	@NotNull
 	private String name;
 	@NotNull
+	@Email(message= "Enter valid Email address")
 	private String emailId;
 	@NotNull
-	private int mobileNumber;
+	@Min(1000000000)
+	@Max(9999999999L)
+	private long mobileNumber;
 	@NotNull
 	private String projectId;
 	public String getId() {
@@ -30,10 +36,10 @@ public class Employee {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public int getMobileNumber() {
+	public long getMobileNumber() {
 		return mobileNumber;
 	}
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 	public String getProjectId() {
