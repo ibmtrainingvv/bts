@@ -31,4 +31,9 @@ public class BugService {
 		bugRepository.save(bug);
 	}
 
+	public void setBugRepository(BugRepository bugRepository) {
+		this.bugRepository = bugRepository;
+	}
+
+
 }
