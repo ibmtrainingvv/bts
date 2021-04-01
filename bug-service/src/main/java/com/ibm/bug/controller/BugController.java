@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ibm.bug.service.BugService;
+import com.ibm.bug.service.EmployeeService;
 import com.ibm.entity.Bug;
 
 @RestController
 public class BugController {
 	@Autowired
-	BugService bugService;
+	EmployeeService bugService;
 
 	/**
 	 * method to create bug
