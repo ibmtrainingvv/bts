@@ -1,19 +1,39 @@
 package com.ibm.entity;
 
+import java.util.Date;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Bug {
 	private String id;
+	@NotNull
 	private String name;
+	@NotNull
 	private PRIORITY priority;
+	@NotNull
 	private String projectId;
+	@NotNull
 	private String module;
+	@NotNull
 	private TYPE type;
+	@NotNull
 	private STATUS status;
+	private Date submitOn;
 	private String buildVersion;
+	@NotNull
 	private SEVERITY severity;
 	private String developerId;
 	private String testerId;
 	private String product;
+	@NotNull
+	@Size(min = 5, max = 50, message = "Synopsis should not be more than 50 characters.")
+	@NotBlank
 	private String synopsis;
+	@Size(min = 5, max = 200, message = "Description should not be more than 200 characters.")
+	@NotBlank
 	private String description;
 
 	public String getId() {
@@ -117,10 +137,7 @@ public class Bug {
 	}
 
 	public void setSynopsis(String synopsis) {
-		if (synopsis.length() > 100) {
-			throw new IndexOutOfBoundsException("Synopsis cannot be longer than 100 characters.");
-		}
-		this.synopsis = synopsis;
+		this.synopsis = synopsis.trim();
 	}
 
 	public String getDescription() {
@@ -128,10 +145,15 @@ public class Bug {
 	}
 
 	public void setDescription(String description) {
-		if (description.length() > 250) {
-			throw new IndexOutOfBoundsException("Cannot be longer than 250 characters");
-		}
-		this.description = description;
+		this.description = description.trim();
+	}
+
+	public Date getSubmitOn() {
+		return submitOn;
+	}
+
+	public void setSubmitOn(Date submitOn) {
+		this.submitOn = submitOn;
 	}
 
 }
