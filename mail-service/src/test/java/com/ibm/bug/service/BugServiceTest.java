@@ -1,9 +1,7 @@
 package com.ibm.bug.service;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.List;
-import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,30 +24,19 @@ class BugServiceTest {
 	void testGetBug() {
 		BugService bugService = new BugService();
 		BugRepository dummyRepo = new DummyBugRepository();
-		bugService.setBugRepository(dummyRepo);
 		bugService.getBugRepository();
 		Bug bug = new Bug();
-		String bugId = bugService.createBug(bug);
-		Optional<Bug> bugRecord = bugService.getBug(bugId);
+		String bugRecord = bugService.getBug(bugId)
 	}
 
 	@Test
 	void testGetBugs() {
-		BugService bugService = new BugService();
-		BugRepository dummyRepo = new DummyBugRepository();
-		bugService.setBugRepository(dummyRepo);
-		bugService.getBugRepository();
-		List<Bug> bugList = bugService.getBugs();
+		fail("Not yet implemented");
 	}
 
 	@Test
 	void testUpdateBug() {
-		BugService bugService = new BugService();
-		BugRepository dummyRepo = new DummyBugRepository();
-		bugService.setBugRepository(dummyRepo);
-		Bug bug = new Bug();
-		String bugId = bugService.createBug(bug);
-		assertNotNull(bugId);
+		fail("Not yet implemented");
 	}
 
 }
