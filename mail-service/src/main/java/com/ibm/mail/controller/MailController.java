@@ -14,8 +14,8 @@ public class MailController {
 	MailService mailService;
 
 	@GetMapping("/mail")
-	int sendMail(@PathParam("to") String mailId) {
-		return mailService.sendMail(mailId);
+	void sendMail(@PathParam("to") String mailId) {
+		mailService.sendEmail(mailId);
 	}
 
 	@GetMapping("/getTaxes")

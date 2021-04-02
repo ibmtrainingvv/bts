@@ -1,43 +1,25 @@
 package com.ibm.mail.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
-import com.ibm.entity.Bug;
-import com.ibm.mail.repo.BugRepository;
 
 @Service
 public class MailService {
 
 	@Autowired
-	BugRepository bugRepository;
+	private JavaMailSender javaMailSender;
 
-	public String createBug(Bug bug) {
-		Bug savedbug = bugRepository.save(bug);
-		return savedbug.getId();
-	}
+	public void sendEmail(String bugId) {
 
-	public Optional<Bug> getBug(String bugId) {
-		return bugRepository.findById(bugId);
-	}
+		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setTo("vaiibm17@gmail.com");
 
-	public List<Bug> getBugs() {
-		return bugRepository.findAll();
-	}
+		msg.setSubject("Testing from Spring Boot");
+		msg.setText("Hello World \n Spring Boot Email");
 
-	public void updateBug(Bug bug) {
-		bugRepository.save(bug);
-	}
+		javaMailSender.send(msg);
 
-	public void setBugRepository(BugRepository bugRepository) {
-		this.bugRepository = bugRepository;
 	}
-	
-	public BugRepository getBugRepository() {
-		return bugRepository;
-	}
-
 }
