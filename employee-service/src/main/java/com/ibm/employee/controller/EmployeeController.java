@@ -2,6 +2,8 @@ package com.ibm.employee.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
@@ -25,6 +27,7 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService; // Dependency Injection
 
+	Logger logger = Logger.getLogger(EmployeeController.class.getName());
 	/**
 	 * method to create employee
 	 * 
@@ -37,7 +40,7 @@ public class EmployeeController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	String createEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult) {
 		validateEmployee(bindingResult);
-		System.out.println(employee);
+		logger.log(Level.INFO,employee.toString());
 		return employeeService.createEmployee(employee);
 	}
 
@@ -80,7 +83,7 @@ public class EmployeeController {
 	void updateEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult,
 			@PathVariable("id") String employeeId) {
 		validateEmployee(bindingResult);
-		System.out.println(employeeId);
+		logger.log(Level.INFO,employeeId);
 		employee.setId(employeeId);
 		employeeService.updateEmployee(employee);
 	}

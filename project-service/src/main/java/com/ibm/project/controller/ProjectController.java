@@ -2,6 +2,8 @@ package com.ibm.project.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
@@ -23,6 +25,8 @@ import com.ibm.project.service.ProjectService;
 public class ProjectController {
 	@Autowired
 	ProjectService projectService; // Dependency Injection
+	
+	Logger logger = Logger.getLogger(ProjectController.class.getName());
 
 	/**
 	 * method to create project
@@ -36,7 +40,7 @@ public class ProjectController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	String createProject(@RequestBody @Valid Project project, BindingResult bindingResult) {
 		validateProject(bindingResult);
-		System.out.println(project);
+		logger.log(Level.INFO, project.toString());
 		return projectService.createProject(project);
 	}
 
@@ -79,7 +83,7 @@ public class ProjectController {
 	void updateProject(@RequestBody @Valid Project project, BindingResult bindingResult,
 			@PathVariable("id") String projectId) {
 		validateProject(bindingResult);
-		System.out.println(projectId);
+		logger.log(Level.INFO,projectId);
 		project.setId(projectId);
 		projectService.updateProject(project);
 	}
