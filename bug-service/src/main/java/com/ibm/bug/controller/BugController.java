@@ -22,13 +22,15 @@ import com.ibm.entity.Bug;
 @RestController
 public class BugController {
 	@Autowired
-	BugService bugService;
+	BugService bugService; // Dependency Injection
 
 	/**
 	 * method to create bug
 	 * 
 	 * @param bug
-	 * @param bindingResult returns bug id
+	 * @param bindingResult
+	 * 
+	 * returns bugId
 	 */
 	@PostMapping("/bug")
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -45,7 +47,9 @@ public class BugController {
 	}
 
 	/**
-	 * method to search all bugs returns list of bugs
+	 * method to search all bugs 
+	 * 
+	 * returns list of bugs
 	 */
 	@GetMapping("/bug")
 	List<Bug> getBugs() {
@@ -55,8 +59,9 @@ public class BugController {
 	/**
 	 * method to search for bug by id
 	 * 
-	 * @param bugId
-	 * @returns zero or matching bug
+	 * @param bugId 
+	 * 
+	 * returns zero or matching bug
 	 */
 	@GetMapping("/bug/{id}")
 	Optional<Bug> getBug(@PathVariable("id") String bugId) {

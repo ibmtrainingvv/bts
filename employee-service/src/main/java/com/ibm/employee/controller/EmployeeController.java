@@ -20,17 +20,18 @@ import com.ibm.employee.entity.Employee;
 import com.ibm.employee.service.EmployeeService;
 
 @RestController
-
 public class EmployeeController {
 
 	@Autowired
-	EmployeeService employeeService;
+	EmployeeService employeeService; // Dependency Injection
 
 	/**
 	 * method to create employee
 	 * 
 	 * @param employee
-	 * @param bindingResult returns employee id
+	 * @param bindingResult 
+	 * 
+	 * returns employeeId
 	 */
 	@PostMapping("/employee")
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -47,7 +48,9 @@ public class EmployeeController {
 	}
 
 	/**
-	 * method to search all employees returns list of employees
+	 * method to search all employees 
+	 * 
+	 * returns list of employees
 	 */
 	@GetMapping("/employee")
 	List<Employee> getEmployees() {
@@ -58,7 +61,8 @@ public class EmployeeController {
 	 * method to search for employee by id
 	 * 
 	 * @param employeeId
-	 * @returns zero or matching employee
+	 * 
+	 * returns zero or matching employee
 	 */
 	@GetMapping("/employee/{id}")
 	Optional<Employee> getEmployee(@PathVariable("id") String employeeId) {

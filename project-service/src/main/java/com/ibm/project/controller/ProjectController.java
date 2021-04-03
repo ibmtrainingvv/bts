@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,13 +22,15 @@ import com.ibm.project.service.ProjectService;
 @RestController
 public class ProjectController {
 	@Autowired
-	ProjectService projectService;
+	ProjectService projectService; // Dependency Injection
 
 	/**
 	 * method to create project
 	 * 
 	 * @param project
-	 * @param bindingResult returns project id
+	 * @param bindingResult 
+	 * 
+	 * returns projectId
 	 */
 	@PostMapping("/project")
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -46,7 +47,9 @@ public class ProjectController {
 	}
 
 	/**
-	 * method to search all projects returns list of projects
+	 * method to search all projects 
+	 * 
+	 * returns list of projects
 	 */
 	@GetMapping("/project")
 	List<Project> getProjects() {
@@ -56,7 +59,9 @@ public class ProjectController {
 	/**
 	 * method to search for project by id
 	 * 
-	 * @param projectId returns zero or matching project
+	 * @param projectId 
+	 * 
+	 * returns zero or matching project
 	 */
 	@GetMapping("/project/{id}")
 	Optional<Project> getProject(@PathVariable("id") String projectId) {
