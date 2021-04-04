@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.project.entity.Project;
 import com.ibm.project.repo.ProjectRepository;
@@ -13,14 +12,10 @@ import com.ibm.project.repo.ProjectRepository;
 @Service
 public class ProjectService {
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectRepository projectRepository; // Dependency Injection
 
-	@Transactional
 	public String createProject(Project project) {
 		Project savedProject = projectRepository.save(project);
-		if(project != null) {
-			throw new RuntimeException();
-		}
 		return savedProject.getId();
 	}
 
@@ -34,6 +29,14 @@ public class ProjectService {
 
 	public void updateProject(Project project) {
 		projectRepository.save(project);
+	}
+
+	public ProjectRepository getProjectRepository() {
+		return projectRepository;
+	}
+
+	public void setProjectRepository(ProjectRepository projectRepository) {
+		this.projectRepository = projectRepository;
 	}
 
 }

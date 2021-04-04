@@ -13,7 +13,7 @@ import com.ibm.entity.Bug;
 public class BugService {
 
 	@Autowired
-	BugRepository bugRepository;
+	BugRepository bugRepository; // Dependency Injection
 
 	public String createBug(Bug bug) {
 		Bug savedbug = bugRepository.save(bug);

@@ -12,7 +12,7 @@ import com.ibm.employee.repo.EmployeeRepository;
 @Service
 public class EmployeeService {
 	@Autowired
-	EmployeeRepository employeeRepository;
+	EmployeeRepository employeeRepository; // Dependency Injection
 
 	public String createEmployee(Employee employee) {
 		Employee savedemployee = employeeRepository.save(employee);
