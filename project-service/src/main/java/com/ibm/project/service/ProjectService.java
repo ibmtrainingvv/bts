@@ -12,7 +12,7 @@ import com.ibm.project.repo.ProjectRepository;
 @Service
 public class ProjectService {
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectRepository projectRepository; // Dependency Injection
 
 	public String createProject(Project project) {
 		Project savedProject = projectRepository.save(project);
@@ -29,6 +29,14 @@ public class ProjectService {
 
 	public void updateProject(Project project) {
 		projectRepository.save(project);
+	}
+
+	public ProjectRepository getProjectRepository() {
+		return projectRepository;
+	}
+
+	public void setProjectRepository(ProjectRepository projectRepository) {
+		this.projectRepository = projectRepository;
 	}
 
 }
