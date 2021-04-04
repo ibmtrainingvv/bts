@@ -1,9 +1,12 @@
 package com.ibm.mail.controller;
 
-import javax.websocket.server.PathParam;
+import java.io.IOException;
+
+import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.mail.service.MailService;
@@ -13,14 +16,17 @@ public class MailController {
 	@Autowired
 	MailService mailService;
 
-	@GetMapping("/mail")
-	void sendMail(@PathParam("to") String mailId) {
-		mailService.sendEmail(mailId);
-	}
+	@GetMapping("/mail/{id}")
+	void sendMail(@PathVariable("id") String bugId) {
+		try {
+			System.out.println(bugId);
 
-	@GetMapping("/getTaxes")
-	float calculateTaxes(@PathParam("price") float price) {
-		return price * 0.3F;
+			mailService.sendEmailWithAttachment(bugId);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
