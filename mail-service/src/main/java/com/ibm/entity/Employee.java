@@ -10,7 +10,7 @@ public class Employee {
 	@NotNull
 	private String name;
 	@NotNull
-	@Email(message= "Enter valid Email address")
+	@Email(message = "Enter valid Email address")
 	private String emailId;
 	@NotNull
 	@Min(1000000000)
@@ -18,35 +18,45 @@ public class Employee {
 	private long mobileNumber;
 	@NotNull
 	private String projectId;
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEmailId() {
 		return emailId;
 	}
+
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
 	public long getMobileNumber() {
 		return mobileNumber;
 	}
+
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+
 	public String getProjectId() {
 		return projectId;
 	}
+
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
-	
+
 }

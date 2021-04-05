@@ -24,8 +24,8 @@ import com.ibm.entity.Bug;
 @RestController
 public class BugController {
 	@Autowired
-	BugService bugService; // Dependency Injection
-	
+	BugService bugService;
+
 	Logger logger = Logger.getLogger(BugController.class.getName());
 
 	/**
@@ -34,13 +34,13 @@ public class BugController {
 	 * @param bug
 	 * @param bindingResult
 	 * 
-	 * returns bugId
+	 *                      returns bugId
 	 */
 	@PostMapping("/bug")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	String createBug(@RequestBody @Valid Bug bug, BindingResult bindingResult) {
 		validateBug(bindingResult);
-		logger.log(Level.INFO,bug.toString());
+		logger.log(Level.INFO, bug.toString());
 		return bugService.createBug(bug);
 	}
 
@@ -51,7 +51,7 @@ public class BugController {
 	}
 
 	/**
-	 * method to search all bugs 
+	 * method to search all bugs
 	 * 
 	 * returns list of bugs
 	 */
@@ -63,9 +63,9 @@ public class BugController {
 	/**
 	 * method to search for bug by id
 	 * 
-	 * @param bugId 
+	 * @param bugId
 	 * 
-	 * returns zero or matching bug
+	 *              returns zero or matching bug
 	 */
 	@GetMapping("/bug/{id}")
 	Optional<Bug> getBug(@PathVariable("id") String bugId) {
@@ -82,7 +82,7 @@ public class BugController {
 	@PutMapping("/bug/{id}")
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateBug(bindingResult);
-		logger.log(Level.INFO,bugId);
+		logger.log(Level.INFO, bugId);
 		bug.setId(bugId);
 		bugService.updateBug(bug);
 	}
