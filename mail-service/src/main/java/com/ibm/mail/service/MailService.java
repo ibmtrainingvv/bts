@@ -29,11 +29,9 @@ public class MailService {
 		MimeMessage msg1 = javaMailSender.createMimeMessage();
 
 		Bug bug = getTaxesTemplate.getForObject("http://localhost:8083/bug/{bugId}", Bug.class, bugId);
-		System.out.println(bug.getName());
 		Project project = getTaxesTemplate.getForObject("http://localhost:8082/project/{projectId}", Project.class,
 				bug.getProjectId());
-		Employee employee = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}", Employee.class,
-				project.getManagerId());
+		Employee employee = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}", Employee.class,project.getManagerId());
 		String mailTo = employee.getEmailId();
 
 		// true = multipart message
@@ -67,9 +65,8 @@ public class MailService {
 			javaMailSender.send(msg);
 		}
 
-		else if (bug.getStatus().name().equals("AASIGNED")) {
-			Employee employee1 = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}",
-					Employee.class, bug.getDeveloperId());
+		else if (bug.getStatus().name().equals("ASSIGNED")) {
+			Employee employee1 = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}",Employee.class, bug.getDeveloperId());
 			String mailTo1 = employee1.getEmailId();
 			MimeMessageHelper helper1 = new MimeMessageHelper(msg1, true);
 

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.ibm.bug.repo.BugRepository;
 import com.ibm.entity.Bug;
@@ -13,10 +14,13 @@ import com.ibm.entity.Bug;
 public class BugService {
 
 	@Autowired
-	BugRepository bugRepository; // Dependency Injection
+	BugRepository bugRepository;
+	@Autowired
+	RestTemplate mailTemplate;
 
 	public String createBug(Bug bug) {
 		Bug savedbug = bugRepository.save(bug);
+		mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
 		return savedbug.getId();
 	}
 
@@ -30,6 +34,7 @@ public class BugService {
 
 	public void updateBug(Bug bug) {
 		bugRepository.save(bug);
+		mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
 	}
 
 	public void setBugRepository(BugRepository bugRepository) {
