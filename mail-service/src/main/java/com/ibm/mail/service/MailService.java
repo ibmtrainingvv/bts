@@ -31,7 +31,8 @@ public class MailService {
 		Bug bug = getTaxesTemplate.getForObject("http://localhost:8083/bug/{bugId}", Bug.class, bugId);
 		Project project = getTaxesTemplate.getForObject("http://localhost:8082/project/{projectId}", Project.class,
 				bug.getProjectId());
-		Employee employee = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}", Employee.class,project.getManagerId());
+		Employee employee = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}", Employee.class,
+				project.getManagerId());
 		String mailTo = employee.getEmailId();
 
 		// true = multipart message
@@ -44,7 +45,6 @@ public class MailService {
 
 			// default = text/plain
 			// true = text/html
-
 			helper.setText(
 					"<!DOCTYPE html> <html> <head> <style> table { font-family: arial, sans-serif; border-collapse:"
 							+ " collapse; width: 100%; "
@@ -55,19 +55,17 @@ public class MailService {
 							+ "</td> </tr> <tr> <td>Tester id </td> <td>" + bug.getTesterId()
 							+ "</td> </tr> <tr> <td>Developer Id</td> <td>" + "<i> YET TO ASSIGNED" + "</td> "
 							+ " </tr> <tr> <td>Description</td> <td>" + bug.getDescription()
-							+ "</td>  </tr> </table> <br><br> <b> Hosted with <p>&hearts;<p> on BUGHAWK </body> </html>",
+							+ "</td>  </tr> </table> <br><br> <b> Hosted with <p style=\"color:red;\">&hearts;<p> on BUGHAWK </body> </html>",
 					true);
-			// FileSystemResource file = new FileSystemResource(new
-			// File("path/android.png"));
-
-			// helper.addAttachment("my_photo.png", new ClassPathResource("android.png"));
 
 			javaMailSender.send(msg);
 		}
 
 		else if (bug.getStatus().name().equals("ASSIGNED")) {
-			Employee employee1 = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}",Employee.class, bug.getDeveloperId());
-			String mailTo1 = employee1.getEmailId();
+			System.out.println(bug.getDeveloperId());
+			employee = getTaxesTemplate.getForObject("http://localhost:8080/employee/{projectId}", Employee.class,
+					project.getManagerId());
+			String mailTo1 = employee.getEmailId();
 			MimeMessageHelper helper1 = new MimeMessageHelper(msg1, true);
 
 			helper1.setTo(mailTo1);
@@ -75,28 +73,23 @@ public class MailService {
 			helper.setSubject("Updation of Bug status for project " + project.getName() + " to ASSIGNED");
 			helper1.setSubject("Updation of Bug status for project " + project.getName() + " to ASSIGNED");
 
-			// default = text/plain
-			// true = text/html
+			String msgToSent = ("<!DOCTYPE html> <html> <head> <style> table { font-family: arial, sans-serif; border-collapse:"
+					+ " collapse; width: 100%; "
+					+ "} td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) {"
+					+ " background-color: #dddddd; } </style> </head> <body> <h2>Status updation of bug for project "
+					+ project.getName() + " <br> Bug ASSIGNED TO Developer " + employee.getName() + "with id "
+					+ employee.getId() + "</h2> <table> <tr> <th>" + "project id </th> <th>" + project.getId()
+					+ "</th>  </tr> <tr> <td>bugId</td> <td>" + bug.getId() + " "
+					+ "</td> </tr> <tr> <td>Tester id </td> <td>" + bug.getTesterId()
+					+ "</td> </tr> <tr> <td>Developer Id</td> <td>" + bug.getDeveloperId() + "</td> "
+					+ " </tr> <tr> <td>Description</td> <td>" + bug.getDescription()
+					+ "</td>  </tr> </table> <br><br> <b> Hosted with <p style=\"color:red;\">&hearts;<p> on BUGHAWK </body> </html>");
 
-			String msgToSent=(
-					"<!DOCTYPE html> <html> <head> <style> table { font-family: arial, sans-serif; border-collapse:"
-							+ " collapse; width: 100%; "
-							+ "} td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) {"
-							+ " background-color: #dddddd; } </style> </head> <body> <h2>Status updation of bug for project "
-							+ project.getName() + " <br> Bug ASSIGNED TO Developer " + employee1.getName() + "with id "
-							+ employee1.getId() + "</h2> <table> <tr> <th>" + "project id </th> <th>" + project.getId()
-							+ "</th>  </tr> <tr> <td>bugId</td> <td>" + bug.getId() + " "
-							+ "</td> </tr> <tr> <td>Tester id </td> <td>" + bug.getTesterId()
-							+ "</td> </tr> <tr> <td>Developer Id</td> <td>" + bug.getDeveloperId() + "</td> "
-							+ " </tr> <tr> <td>Description</td> <td>" + bug.getDescription()
-							+ "</td>  </tr> </table> <br><br> <b> Hosted with <p>&hearts;<p> on BUGHAWK </body> </html>");
-			
-			helper.setText(msgToSent,true);
-			helper1.setText(msgToSent,true);
-			// FileSystemResource file = new FileSystemResource(new
+			helper.setText(msgToSent, true);
+			helper1.setText(msgToSent, true);
 			javaMailSender.send(msg);
 			javaMailSender.send(msg1);
-			
+
 		}
 
 	}
