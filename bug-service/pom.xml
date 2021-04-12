@@ -36,5 +36,23 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<build>
+  <plugins>
+    <plugin>
+      <!-- Build an executable JAR -->
+    <groupId>com.ibm</groupId>
+	<artifactId>bug-service</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.ibm.bug</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 
 </project>
