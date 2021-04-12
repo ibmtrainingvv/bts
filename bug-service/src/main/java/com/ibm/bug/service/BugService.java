@@ -34,7 +34,7 @@ public class BugService {
 
 	public void updateBug(Bug bug) {
 		bugRepository.save(bug);
-		mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
+		//mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
 	}
 
 	public void setBugRepository(BugRepository bugRepository) {
