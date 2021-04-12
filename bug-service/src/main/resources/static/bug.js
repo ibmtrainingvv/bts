@@ -28,6 +28,50 @@ function getBug() {
 }
 
 function usendbug() {
+	bugd=JSON.stringify({
+			name: document.getElementById('bugname').value,
+			status: document.getElementById('status').value,
+			priority: document.getElementById('bugpriority').value,
+			//submitOn: document.getElementById('date').value,
+			buildVersion: document.getElementById('buildversion').value,
+			module: document.getElementById('module').value,
+			type: document.getElementById("type").value,
+			severity: document.getElementById('severity').value,
+			projectId: document.getElementById('projectid').value,
+			developerId: document.getElementById('developerid').value,
+			testerId: document.getElementById('testerid').value,
+			synopsis: document.getElementById('synopsis').value,
+			description: document.getElementById('description').value
+			});
+			{
+let remText = bugd.name.replace(/ /g, "");
+if(remText.length<5 || remText.length>25)
+{
+	return alert("name should be min 5 and max 25 withou space");
+};
+
+let remText = bugd.buildVersion.replace(/ /g, "");
+if(remText.length<1 || remText.length>25)
+{
+	return alert("build version should be min 1 and max 25 withou space");
+};
+let remText = bugd.synopsis.replace(/ /g, "");
+if(remText.length<10 || remText.length>50)
+{
+	return alert("synopsis should be min 10 and max 50 withou space");
+};
+let remText = bugd.description.replace(/ /g, "");
+if(remText.length<10 || remText.length>50)
+{
+	return alert("descriptiom should be min 10 and max 50 withou space");
+};
+let remText = bugd.projectId.replace(/ /g, "");
+if(remText.length<1 || remText.length>25)
+{
+	return alert("projectId should be min 1 and max 25 withou space");
+};
+}
+			
 	fetch('/bug/' + document.getElementById('id').value, {
 		method: 'PUT',
 		headers: {
