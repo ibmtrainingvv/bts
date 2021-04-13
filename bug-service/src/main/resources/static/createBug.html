@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to BugHawk</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css1/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="bughawk.jpeg" alt="Image" id="logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="searchbug.html">Bugs</a></li>
+                    <li><a href="searchproject.html">Projects</a></li>
+                    <li><a href="searchemployee.html">Employees</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid text-center" style="background-color: #f8f9fa;">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <button class="btn btn-link" onclick="document.location='createbug.html'">Create Bug</button>
+                <button class="buttonStyling" onclick="document.location='searchbug.html'">Search Bug</button>
+                <button class="buttonStyling" onclick="document.location='updatebug.html'">Update Bug</button>
+            </div>
+
+            <div id="bugDetails" style="background-color: #f8f9fa;">
+                <form class="form-inline">
+
+                    <div class="col-sm-10 text-left" id="column1" style="background-color: #f8f9fa;">
+
+                        <div id="updateFields" class="column form-group">
+
+                            <label><b>Bug ID</b></label>
+                            <input class="form-control" type="text" placeholder="Enter Bug ID" id="id">
+                            <br>
+
+
+                            <label><b>Bug Name </b></label>
+
+                            <input class="form-control" type="text" placeholder="Enter Bug Name" id='bugname' required>
+                            <br>
+                            <label><b>Bug Status</b></label>
+                            <select class="form-control" id="status">
+                                <option value='NEW'>NEW</option>
+                                <option value='ASSIGNED'>ASSIGNED</option>
+                                <option value='OPEN'>OPEN</option>
+                                <option value='FIXED'>FIXED</option>
+                                <option value='PENDING_RETEST'>PENDING_RETEST</option>
+                                <option value='RETEST'>RETEST</option>
+                                <option value='REOPEN'>REOPEN</option>
+                                <option value='VERIFIED'>VERIFIED</option>
+                                <option value='CLOSED'>CLOSED</option>
+                                <option value='REJECTED'>REJECTED</option>
+                                <option value='DUPLICATED'>DUPLICATE</option>
+                                <option value='DEFERRED'>DEFERRED</option>
+                                <option value='NOT_A_BUG'>NOT_A_BUG</option>
+                            </select>
+                            <br>
+                            <label>Bug Priority</label>
+                            <select class="form-control" id='bugpriority'>
+                                <option value='HIGH'>HIGH</option>
+                                <option value='MEDIUM'>MEDIUM</option>
+                                <option value='LOW'>LOW</option>
+                            </select><br>
+                            <label>Submitted On</label>
+                            <input class="form-control" id='date' type="date"><br>
+                            <label><b>Module</b></label>
+                            <input class="form-control" type="text" id='module' placeholder="Enter Module">
+                            <br>
+                            <label><b>Build Version</b></label>
+                            <input class="form-control" type="text" id='buildversion' placeholder="Enter Build Version"
+                                required>
+                            <label><b>Type</b></label>
+                            <select class="form-control" id='type'>
+                                <option value='LOGICAL'>LOGICAL</option>
+                                <option value='SYNTAX'>SYNTAX</option>
+                                <option value='GUI'>GUI</option>
+                                <option value='API'>API</option>
+                                <option value='RUNTIME'>RUNTIME</option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="column form-group" id="column2" style="background-color: #f8f9fa;">
+                            <label><b>Severity</b></label>
+                            <select class="form-control" id='severity'>
+                                <option value='LOW'>LOW</option>
+                                <option value='MINOR'>MINOR</option>
+                                <option value='MAJOR'>MAJOR</option>
+                                <option value='CRITICAL'>CRITICAL</option>
+                                <option value='BLOCKER'>BLOCKER</option>
+                            </select>
+
+
+
+                            <span id='idproject1'>
+
+                            </span>
+                            <br>
+                            <label><b>Developer ID</b></label>
+                            <input class="form-control" type="text" id='developerid' placeholder="Enter Developer ID">
+                            <br>
+                            <label><b>Tester ID</b></label>
+                            <input class="form-control" type="text" id='testerid' placeholder="Enter Tester ID">
+                            <br>
+                            <label><b>Synopsis</b></label>
+                            <textarea class="form-control" name="" id="synopsis" cols="30" rows="2"></textarea>
+                            <br>
+                            <label><b>Description</b></label>
+                            <textarea class="form-control" name="" id="description" cols="30" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <button class="submitButton" onclick="createBug()">Create Bug</button>
+            </div>
+            <div id="toast">Bug created!</div>
+        </div>
+
+    </div>
+    <footer class="container-fluid text-center">
+        <p>© Copyright BugHawk 2021</p>
+    </footer>
+
+</body>
+<script src="bugTasks.js"></script>
+
+</html>
