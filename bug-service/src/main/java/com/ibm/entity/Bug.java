@@ -34,6 +34,7 @@ public class Bug {
 	@Size(min = 5, max = 200, message = "Description should not be more than 200 characters.")
 	@NotBlank
 	private String description;
+	private Date eta;
 
 	public String getId() {
 		return id;
@@ -153,6 +154,17 @@ public class Bug {
 
 	public void setSubmitOn(Date submitOn) {
 		this.submitOn = submitOn;
+	}
+
+	public Date getEta() {
+		return eta;
+	}
+
+	public void setEta(Date eta) {
+		if (eta.compareTo(new Date()) < 0) {
+			throw new IllegalArgumentException("ETA cannot be past day");
+		}
+		this.eta = eta;
 	}
 
 }

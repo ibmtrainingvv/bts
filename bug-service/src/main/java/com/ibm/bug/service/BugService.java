@@ -1,5 +1,6 @@
 package com.ibm.bug.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +20,9 @@ public class BugService {
 	RestTemplate mailTemplate;
 
 	public String createBug(Bug bug) {
+		bug.setSubmitOn(new Date());
 		Bug savedbug = bugRepository.save(bug);
-		mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
+		//mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
 		return savedbug.getId();
 	}
 
