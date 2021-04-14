@@ -245,6 +245,7 @@ function refresh() {
 			}
 		})
 }
+
 function getProject() {
 	fetch('http://localhost:8082/project/')
 		.then(response => response.json())
@@ -262,4 +263,5 @@ function getProject() {
 		})
 
 }
+
 refresh();
