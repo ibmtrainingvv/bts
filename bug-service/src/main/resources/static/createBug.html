@@ -82,9 +82,9 @@
                         <option>LOW</option>
                     </select><br>
                     <label>Submitted On</label>
-                    <input type="date" id = "submittedOn" class = "form-control"><br>
+                    <input type="date" id = "submittedOn" required class = "form-control"><br>
                     <label><b>Module</b></label>
-                <input type="text" placeholder="Enter Module" id = "module" class = "form-control">
+                <input type="text" placeholder="Enter Module" id = "module" required class = "form-control">
                 <br>
                     <label><b>Build Version</b></label>
                     <input type="text" placeholder="Enter Build Version" id = "buildVersion" required class = "form-control">
@@ -111,16 +111,16 @@
                 <label><b>Project ID</b></label>
                 <input type="text" placeholder="Enter Project ID" id = "projectId" required class = "form-control"><br>
                 <label><b>Developer ID</b></label>
-                <input type="text" placeholder="Enter Developer ID" id = "developerId" class = "form-control">
+                <input type="text" placeholder="Enter Developer ID" id = "developerId" required class = "form-control">
                 <br>
                 <label><b>Tester ID</b></label>
-                <input type="text" placeholder="Enter Tester ID" id = "testerId" class = "form-control">
+                <input type="text" placeholder="Enter Tester ID" id = "testerId" required class = "form-control">
                 <br>
                 <label><b>Synopsis</b></label>
-                <textarea name="" cols="30" rows="2" id = "synopsis" name = "synopsis" class = "form-control"></textarea>
+                <textarea placeholder="Synopsis should be maximum 30 words" name="" cols="30" rows="2" id = "synopsis" name = "synopsis" required class = "form-control"></textarea>
                 <br>
                 <label><b>Description</b></label>
-                <textarea name="" cols="30" rows="4" id = "description" name = "description" class = "form-control"></textarea>
+                <textarea placeholder="Description should be maximum 50 words" name="" cols="30" rows="4" id = "description" name = "description" required class = "form-control"></textarea>
             </div>
         </div>
         <button type="submit" class="submitButton" onclick = "createBug()">Create Bug</button>
