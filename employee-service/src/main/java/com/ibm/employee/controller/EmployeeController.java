@@ -28,19 +28,19 @@ public class EmployeeController {
 	EmployeeService employeeService; // Dependency Injection
 
 	Logger logger = Logger.getLogger(EmployeeController.class.getName());
+
 	/**
 	 * method to create employee
 	 * 
 	 * @param employee
-	 * @param bindingResult 
+	 * @param bindingResult
 	 * 
-	 * returns employeeId
 	 */
 	@PostMapping("/employee")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	String createEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult) {
 		validateEmployee(bindingResult);
-		logger.log(Level.INFO,employee.toString());
+		logger.log(Level.INFO, employee.toString());
 		return employeeService.createEmployee(employee);
 	}
 
@@ -51,7 +51,7 @@ public class EmployeeController {
 	}
 
 	/**
-	 * method to search all employees 
+	 * method to search all employees
 	 * 
 	 * returns list of employees
 	 */
@@ -64,8 +64,6 @@ public class EmployeeController {
 	 * method to search for employee by id
 	 * 
 	 * @param employeeId
-	 * 
-	 * returns zero or matching employee
 	 */
 	@GetMapping("/employee/{id}")
 	Optional<Employee> getEmployee(@PathVariable("id") String employeeId) {
@@ -83,7 +81,7 @@ public class EmployeeController {
 	void updateEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult,
 			@PathVariable("id") String employeeId) {
 		validateEmployee(bindingResult);
-		logger.log(Level.INFO,employeeId);
+		logger.log(Level.INFO, employeeId);
 		employee.setId(employeeId);
 		employeeService.updateEmployee(employee);
 	}

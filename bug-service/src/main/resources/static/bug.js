@@ -31,7 +31,8 @@ function usendbug() {
 	let bugd = {};
 
 	let error = 0;
-	let errorText;
+
+	let errorText = "";
 
 	let name = document.getElementById('bugname').value
 	if (name) {
@@ -47,7 +48,9 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error Name is mandotory \n";
+
+		errorText += error + ". error- Name is mandatory \n";
+
 	}
 
 
@@ -57,7 +60,9 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error status is mandotory \n";
+
+		errorText += error + ". error- status is mandatory \n";
+
 	}
 
 	let priority = document.getElementById('bugpriority').value;
@@ -66,7 +71,8 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error priority is mandotory \n";
+		errorText += error + ". error- priority is mandatory \n";
+
 	}
 
 	let severity = document.getElementById('severity').value;
@@ -75,7 +81,8 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error severity is mandotory \n";
+		errorText += error + ". error- severity is mandatory \n";
+
 	}
 
 	let type = document.getElementById('type').value;
@@ -84,7 +91,8 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error type is mandotory \n";
+		errorText += error + ". error- type is mandatory \n";
+
 	}
 
 	let projectId = document.getElementById('idproject').value
@@ -92,7 +100,8 @@ function usendbug() {
 		let remText = projectId.replace(/ /g, "");
 		if (remText.length < 1 || remText.length > 25 || remText.length != projectId.length) {
 			error++;
-			errorText += error + ". Error projectId should be minimum 1 and maximum 25 and spaces not allowed) \n";
+			errorText += error + ". error- projectId should be minimum 1 and maximum 25 and spaces not allowed) \n";
+
 		}
 		else {
 			bugd.projectId = projectId;
@@ -101,7 +110,9 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error projectId is mandotory \n";
+
+		errorText += error + ". error- projectId is mandatory \n";
+
 	}
 
 	let synopsis = document.getElementById('synopsis').value
@@ -109,7 +120,8 @@ function usendbug() {
 		let remText = synopsis.replace(/ /g, "");
 		if (remText.length < 10 || remText.length > 50) {
 			error++;
-			errorText += error + ". Error synopsis should be minimum 10 and maximum 50) \n";
+			errorText += error + ". error- synopsis should be minimum 10 and maximum 50) \n";
+
 		}
 		else {
 			bugd.synopsis = synopsis;
@@ -118,7 +130,9 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error synopsis is mandotory \n";
+
+		errorText += error + ". error- synopsis is mandatory \n";
+
 	}
 
 	let module = document.getElementById('module').value
@@ -126,7 +140,8 @@ function usendbug() {
 		let remText = module.replace(/ /g, "");
 		if (remText.length < 1 || remText.length > 50) {
 			error++;
-			errorText += error + ". Error module should be minimum 10 and maximum 50) \n";
+			errorText += error + ". error- module should be minimum 10 and maximum 50) \n";
+
 		}
 		else {
 			bugd.module = module;
@@ -135,7 +150,8 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error module is mandotory \n";
+
+		errorText += error + ". error- module is mandatory \n";
 	}
 
 	let description = document.getElementById('description').value
@@ -143,7 +159,8 @@ function usendbug() {
 		let remText = description.replace(/ /g, "");
 		if (remText.length < 10 || remText.length > 200) {
 			error++;
-			errorText += error + ". Error description should be minimum 10 and maximum 200) \n";
+
+			errorText += error + ". error- description should be minimum 10 and maximum 200) \n";
 		}
 		else {
 			bugd.description = description;
@@ -152,7 +169,9 @@ function usendbug() {
 	}
 	else {
 		error++;
-		errorText += error + ". Error description is mandotory \n";
+
+		errorText += error + ". error- description is mandatory \n";
+
 	}
 
 	let buildVersion = document.getElementById('buildversion').value
@@ -160,7 +179,9 @@ function usendbug() {
 		let remText = buildVersion.replace(/ /g, "");
 		if (remText.length < 1 || remText.length > 25) {
 			error++;
-			errorText += error + ". Error buildVersion should be minimum 1 and maximum 25) \n";
+
+			errorText += error + ". error- buildVersion should be minimum 1 and maximum 25) \n";
+
 		}
 		else {
 			bugd.buildVersion = buildVersion;
@@ -171,7 +192,9 @@ function usendbug() {
 
 	let submitOn = document.getElementById('date').value
 	if (submitOn) {
-		bugd.submitOn = submitOn;
+
+		bugd.eta = submitOn;
+
 	}
 
 	let testerId = document.getElementById('testerid').value
@@ -179,7 +202,9 @@ function usendbug() {
 		let remText = testerId.replace(/ /g, "");
 		if (remText.length < 1 || remText.length > 25 || remText.length != testerId.length) {
 			error++;
-			errorText += error + ". Error testerId should be minimum 1 and maximum 25 and no spaces allowed) \n";
+
+			errorText += error + ". error- testerId should be minimum 1 and maximum 25 and no spaces allowed) \n";
+
 		}
 		else {
 			bugd.testerId = testerId;
@@ -194,7 +219,9 @@ function usendbug() {
 		let remText = developerId.replace(/ /g, "");
 		if (remText.length < 1 || remText.length > 25 || remText.length != developerId.length) {
 			error++;
-			errorText += error + ". Error developerId should be minimum 1 and maximum 25 and no spaces allowed) \n";
+
+			errorText += error + ". error- developerId should be minimum 1 and maximum 25 and no spaces allowed) \n";
+
 		}
 		else {
 			bugd.developerId = developerId;
@@ -203,12 +230,21 @@ function usendbug() {
 
 	if (error) {
 		if (error < 4)
-			return alert("Total error are : " + error + errorText);
+			return alert("Total error are : " + error + "\n" + errorText);
 		else {
-			return alert("total Errors are : " + error + errorText);
+			return alert("total Errors are : " + error + "\n" + errorText);
 		}
 		console.log((bugd));
 	}
+	function success(response) {
+		if (!response.ok) {
+			return (alert("error !!"));
+		}
+		(refresh(alert("bug updated")));
+
+
+	}
+
 
 
 
@@ -219,9 +255,95 @@ function usendbug() {
 		},
 		body: JSON.stringify(bugd)
 	})
-		.then(response => refresh(alert("bug updated!")));
+
+		.then(success);
 
 }
+
+function getFieldData() {
+	fetch('/bug/' + document.getElementById('id').value)
+		.then(response => response.json())
+		.then(json => {
+			let radr = JSON.stringify(json)
+			radr = JSON.parse(radr)
+			document.getElementById('bugname').value = "";
+
+			if (radr.name) {
+				document.getElementById('bugname').value = radr.name;
+			}
+			document.getElementById('bugpriority').value = "";
+
+			if (radr.priority) {
+				document.getElementById('bugpriority').value = radr.priority;
+			}
+			document.getElementById('status').value = '';
+
+			if (radr.status) {
+				document.getElementById('status').value = radr.status;
+			}
+			document.getElementById('date').value = '';
+
+			if (radr.eta) {
+				document.getElementById('date').value = radr.eta.split('T')[0];
+			}
+			document.getElementById('buildversion').value = '';
+			if (radr.buildVersion) {
+				document.getElementById('buildversion').value = radr.buildVersion;
+			}
+			document.getElementById('type').value = '';
+
+			if (radr.type) {
+				document.getElementById('type').value = radr.type;
+			}
+			document.getElementById('severity').value = '';
+
+			if (radr.severity) {
+				document.getElementById('severity').value = radr.severity;
+			}
+			document.getElementById('developerid').value = '';
+
+			if (radr.developerId) {
+				document.getElementById('developerid').value = radr.developerId;
+			}
+			document.getElementById('testerid').value = '';
+
+			if (radr.testerId) {
+				document.getElementById('testerid').value = radr.testerId;
+			}
+			document.getElementById('synopsis').value = '';
+
+			if (radr.synopsis) {
+				document.getElementById('synopsis').value = radr.synopsis;
+			}
+			document.getElementById('description').value = '';
+
+			if (radr.description) {
+				document.getElementById('description').value = radr.description;
+			}
+			document.getElementById('module').value = '';
+
+			if (radr.module) {
+				document.getElementById('module').value = radr.module;
+			}
+
+
+
+
+
+			if (document.getElementById('idselect')) {
+				getProject();
+			}
+			if (radr.projectId) {
+				document.getElementById('idproject').value = radr.projectId;
+			}
+		})
+		// .then(data => {
+		// 	if (document.getElementById('showbugdata')) {
+		// 		getBug()
+		// 	}
+		// })
+}
+
 
 function refresh() {
 	fetch('/bug/')
@@ -229,14 +351,19 @@ function refresh() {
 		.then(json => {
 			let radr = JSON.stringify(json)
 			radr = JSON.parse(radr)
-			let txt1 = "<select name=\"id\" id=\"id\" class=\"form-control\"   style=\"display: block;margin:0 auto;\">";
+
+			let txt1 = "<select onchange='getFieldData()' name=\"id\" id=\"id\" class=\"form-control\"   style=\"display: block;margin:0 auto;\">";
 			for (let i = 0; i < radr.length; i++) {
-				txt1 += "<option value='" + radr[i].id + "'>" + radr[i].id + "  " + radr[i].name + "</option>";
+				txt1 += "<option  value='" + radr[i].id + "'>" + radr[i].id + "  " + radr[i].name + "</option>";
+
 			}
 			txt1 += "</select>";
 			if (document.getElementById('idselect')) {
 				document.getElementById('idselect').innerHTML = txt1;
 				getProject();
+
+				getFieldData();
+
 			}
 		})
 		.then(data => {
@@ -245,13 +372,17 @@ function refresh() {
 			}
 		})
 }
+
+
 function getProject() {
 	fetch('http://localhost:8082/project/')
 		.then(response => response.json())
 		.then(json => {
 			let radr = JSON.stringify(json)
 			radr = JSON.parse(radr)
-			let txt2 = "<label><b>Project ID</b></label><select name=\"idproject\" id=\"idproject\" class=\"form-control\"   style=\"display: block;margin:0 auto;\">";
+
+			let txt2 = "<label><b>Project ID <span style=\"color:red\">*</span></b></label><select name=\"idproject\" id=\"idproject\" class=\"form-control\"   style=\"margin: auto;\">";
+
 			for (let i = 0; i < radr.length; i++) {
 				txt2 += "<option value='" + radr[i].id + "'>" + radr[i].id + "  " + radr[i].name + "</option>";
 			}
@@ -262,4 +393,5 @@ function getProject() {
 		})
 
 }
+
 refresh();

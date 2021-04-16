@@ -27,7 +27,9 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
+
+                    <li ><a href="index.html">Home</a></li>
+
                     <li class="active"><a href="searchbug.html">Bugs</a></li>
                     <li><a href="searchproject.html">Projects</a></li>
                     <li><a href="searchemployee.html">Employees</a></li>
@@ -41,90 +43,100 @@
         <div class="row content">
             <div class="col-sm-2 sidenav">
                 <button class="btn btn-link" onclick="document.location='createbug.html'">Create Bug</button>
-				<button class="buttonStyling" onclick="document.location='searchbug.html'">Search Bug</button>
-				<button class="buttonStyling" onclick="document.location='updatebug.html'">Update Bug</button>
+                <button class="buttonStyling" onclick="document.location='searchbug.html'">Search Bug</button>
+                <button class="buttonStyling" onclick="document.location='updatebug.html'">Update Bug</button>
             </div>
-            <div id = "bugDetails" style="background-color: #f8f9fa;">
-            <form class = "form-inline">
-            <div class="col-sm-10 text-left" id = "column1" style="background-color: #f8f9fa;">
-                <div id="bugFields" class="column form-group">
-                    <label><b>Bug ID</b></label>
-                    <input class = "form-control" type="text" placeholder="Enter Bug ID" id = "id">
-                    <br>
-                    <label><b>Bug Name</b></label>
-                    <input type="text" placeholder="Enter Bug Name" id = "name" required class = "form-control">
-                    <br>
-                    <label><b>Bug Status</b></label>
-                    <select id="status" class = "form-control" required>
-                        <option>NEW</option>
-                        <option>ASSIGNED</option>
-                        <option>OPEN</option>
-                        <option>FIXED</option>
-                        <option>PENDING_RETEST</option>
-                        <option>RETEST</option>
-                        <option>REOPEN</option>
-                        <option>VERIFIED</option>
-                        <option>CLOSED</option>
-                        <option>REJECTED</option>
-                        <option>DUPLICATE</option>
-                        <option>DEFERRED</option>
-                        <option>NOT_A_BUG</option>
-                    </select>
-                    <br>
-                    <label>Bug Priority</label>
-                    <select id = "priority" class = "form-control" required>
-                        <option>HIGH</option>
-                        <option>MEDIUM</option>
-                        <option>LOW</option>
-                    </select><br>
-                    <label>Submitted On</label>
-                    <input type="date" id = "submittedOn" class = "form-control"><br>
-                    <label><b>Module</b></label>
-                <input type="text" placeholder="Enter Module" id = "module" class = "form-control" required>
-                <br>
-                    <label><b>Build Version</b></label>
-                    <input type="text" placeholder="Enter Build Version" id = "buildVersion" required class = "form-control">
-                    <label><b>Type</b></label>
-                <select id = "type" class = "form-control" required>
-                    <option>LOGICAL</option>
-                    <option>SYNTAX</option>
-                    <option>GUI</option>
-                    <option>API</option>
-                    <option>RUNTIME</option>
-                </select>
-                <br>
-            </div>
-            <div class = "column form-group" id = "column2" class = "form-control" style="background-color: #f8f9fa;">
-                <label><b>Severity</b></label>
-                <select id = "severity" class = "form-control" required>
-                    <option>LOW</option>
-                    <option>MINOR</option>
-                    <option>MAJOR</option>
-                    <option>CRITICAL</option>
-                    <option>BLOCKER</option>
-                </select>
-                <br>
-                <label><b>Project ID</b></label>
-                <input type="text" placeholder="Enter Project ID" id = "projectId" required class = "form-control"><br>
-                <label><b>Developer ID</b></label>
-                <input type="text" placeholder="Enter Developer ID" id = "developerId" class = "form-control">
-                <br>
-                <label><b>Tester ID</b></label>
-                <input type="text" placeholder="Enter Tester ID" id = "testerId" class = "form-control">
-                <br>
-                <label><b>Synopsis</b></label>
-                <textarea name="" cols="30" rows="2" id = "synopsis" name = "synopsis" class = "form-control" required></textarea>
-                <br>
-                <label><b>Description</b></label>
-                <textarea name="" cols="30" rows="4" id = "description" name = "description" class = "form-control" required></textarea>
+            <div id="bugDetails" style="background-color: #f8f9fa;">
+                <form class="form-inline">
+                    <div class="col-sm-10 text-left" id="column1" style="background-color: #f8f9fa;">
+                        <div id="bugFields" class="column form-group">
+                            <label><b>Bug ID</b></label>
+                            <input class="form-control" type="text" placeholder="Enter Bug ID" id="id">
+                            <br>
+
+                            <label><b>Bug Name <span style="color:red">*</span></b></label>
+
+                            <input class="form-control" type="text" placeholder="Enter Bug Name" id='bugname' required>
+                            <br>
+                            <label><b>Bug Status <span style="color:red">*</span></b></label>
+                            <select class="form-control" id="status">
+                                <option value='NEW'>NEW</option>
+                                <option value='ASSIGNED'>ASSIGNED</option>
+                                <option value='OPEN'>OPEN</option>
+                                <option value='FIXED'>FIXED</option>
+                                <option value='PENDING_RETEST'>PENDING_RETEST</option>
+                                <option value='RETEST'>RETEST</option>
+                                <option value='REOPEN'>REOPEN</option>
+                                <option value='VERIFIED'>VERIFIED</option>
+                                <option value='CLOSED'>CLOSED</option>
+                                <option value='REJECTED'>REJECTED</option>
+                                <option value='DUPLICATED'>DUPLICATE</option>
+                                <option value='DEFERRED'>DEFERRED</option>
+                                <option value='NOT_A_BUG'>NOT_A_BUG</option>
+                            </select>
+                            <br>
+                            <label>Bug Priority <span style="color:red">*</span></label>
+                            <select class="form-control" id='bugpriority'>
+                                <option value='HIGH'>HIGH</option>
+                                <option value='MEDIUM'>MEDIUM</option>
+                                <option value='LOW'>LOW</option>
+                            </select><br>
+                            <label>ETA</label>
+                            <input class="form-control" id='date' type="date"><br>
+                            <label><b>Module <span style="color:red">*</span></b></label>
+                            <input class="form-control" type="text" id='module' placeholder="Enter Module">
+                            <br>
+                            <label><b>Build Version <span style="color:red">*</span></b></label>
+                            <input class="form-control" type="text" id='buildversion' placeholder="Enter Build Version"
+                                required>
+                            <label><b>Type</b></label>
+                            <select class="form-control" id='type'>
+                                <option value='LOGICAL'>LOGICAL</option>
+                                <option value='SYNTAX'>SYNTAX</option>
+                                <option value='GUI'>GUI</option>
+                                <option value='API'>API</option>
+                                <option value='RUNTIME'>RUNTIME</option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="column form-group" id="column2" style="background-color: #f8f9fa;">
+                            <label><b>Severity <span style="color:red">*</span></b></label>
+                            <select class="form-control" id='severity'>
+                                <option value='LOW'>LOW</option>
+                                <option value='MINOR'>MINOR</option>
+                                <option value='MAJOR'>MAJOR</option>
+                                <option value='CRITICAL'>CRITICAL</option>
+                                <option value='BLOCKER'>BLOCKER</option>
+                            </select>
+
+
+
+                            <span id='idproject1'>
+
+                            </span>
+                            <br>
+                            <label><b>Developer ID</b></label>
+                            <input class="form-control" type="text" id='developerid' placeholder="Enter Developer ID">
+                            <br>
+                            <label><b>Tester ID</b></label>
+                            <input class="form-control" type="text" id='testerid' placeholder="Enter Tester ID">
+                            <br>
+                            <label><b>Synopsis <span style="color:red">*</span></b></label>
+                            <textarea class="form-control" name="" id="synopsis" cols="30" rows="2"></textarea>
+                            <br>
+                            <label><b>Description <span style="color:red">*</span></b></label>
+                            <textarea class="form-control" name="" id="description" cols="30" rows="4"></textarea>
+                        </div>
+                    </div>
+                    </form>
+                    <button class="submitButton" onclick="createBug()">Create Bug</button>
+                    <div id="toast">Bug created!</div>
             </div>
         </div>
-        <button class="submitButton" onclick = "createBug()">Create Bug</button>
-    </div>
-    <div id="toast">Bug created!</div>
-</div>
 
-</div>
+
+    </div>
+
     <footer class="container-fluid text-center">
         <p>© Copyright BugHawk 2021</p>
     </footer>

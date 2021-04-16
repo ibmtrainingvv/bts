@@ -23,7 +23,8 @@ public class BugService {
 	public String createBug(Bug bug) {
 		bug.setSubmitOn(new Date());
 		Bug savedbug = bugRepository.save(bug);
-//		mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
+		//mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
+
 		return savedbug.getId();
 	}
 
@@ -88,7 +89,9 @@ public class BugService {
 			}
 		});
 		bugRepository.save(bug);
-//		mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
+
+		//mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, bug.getId());
+
 	}
 
 	public void setBugRepository(BugRepository bugRepository) {
