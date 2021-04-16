@@ -204,10 +204,12 @@ function createBug(){
 			}
 
 			fetch('/bug', {
+
 				method:'POST',
 				headers: {
 				      'Content-Type': 'application/json'
 				    },
+
 				    body:JSON.stringify(bugd)
 			})
 			.then(success);
@@ -231,8 +233,10 @@ function getProject() {
 
 }
 getProject();
+
 function showToast(){
 	var toast = document.getElementById("toast");
 	toast.className = "show";
 	setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
 }
+
