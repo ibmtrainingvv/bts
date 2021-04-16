@@ -37,7 +37,7 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid text-center">
+	<div class="container-fluid text-center" style="background-color: #f8f9fa;">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
 				<br>
@@ -46,11 +46,11 @@
 				<button class="buttonStyling"  onclick="document.location='updateproject.html'">Update Project</button>
 			</div>
 
-			<div id="createProject">
-				<div class="col-sm-10 text-left" id="column1">
+			<div id="createProject" style="background-color: #f8f9fa;">
+				<div class="col-sm-10 text-left" id="column1" style="background-color: #f8f9fa;">
 					<form class="form-inline">
 						<br> <span id='idselect'></span> <br>
-						<div id="projectFields" class="column form-group">
+						<div id="projectFields" class="column form-group" style="background-color: #f8f9fa;">
 
 
 							<label><b>Project Name </b></label> 
@@ -59,7 +59,7 @@
 							<input class="form-control" type="text" placeholder="Enter Project Manager Id" id='managerId' required>
 							<br>
 						</div>
-						<div class="column form-group" id="column2">
+						<div class="column form-group" id="column2" style="background-color: #f8f9fa;">
 							<label><b>Tester Id(separated by , ) </b></label> 
 							<input class="form-control" type="text" placeholder="Enter Tester Id" id='testerIds' required> <br>
 							<label><b>Developer Id (separated by , ) </b></label> 
@@ -68,10 +68,11 @@
 						</div>
 					</form>
 				</div>
-				<button class="btn btn-primary" onclick = "createProject()">Create Project</button>
+				<button class="submitButton" onclick = "createProject()">Create Project</button>
 			</div>
 			<br>
 			    <div id="toast">Project created!</div>
+		</div>
 		</div>
 		<footer class="container-fluid text-center">
 			<p>© Copyright BugHawk 2021</p>
