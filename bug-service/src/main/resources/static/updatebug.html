@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid text-center">
+    <div class="container-fluid text-center" style="background-color: #f8f9fa;">
         <div class="row content">
             <div class="col-sm-2 sidenav">
                 <br>
@@ -49,11 +49,15 @@
                 <button class="btn btn-link" onclick="document.location='updatebug.html'">Update Bug</button>
             </div>
 
-            <div id="updateBugDetails">
+            <div id="updateBugDetails" style="background-color: #f8f9fa;">
                 <form class="form-inline">
                     <br>
-                    <span id='idselect'></span> <br>
-                    <div class="col-sm-10 text-left" id="column1">
+                    <span id='idselect'>
+
+                    </span>
+                    <br>
+
+                    <div class="col-sm-10 text-left" id="column1" style="background-color: #f8f9fa;">
 
                         <div id="updateFields" class="column form-group">
 
@@ -104,7 +108,7 @@
                             </select>
                             <br>
                         </div>
-                        <div class="column form-group" id="column2">
+                        <div class="column form-group" id="column2" style="background-color: #f8f9fa;">
                             <label><b>Severity</b></label>
                             <select class="form-control" id='severity'>
                                 <option value='LOW'>LOW</option>
@@ -113,10 +117,13 @@
                                 <option value='CRITICAL'>CRITICAL</option>
                                 <option value='BLOCKER'>BLOCKER</option>
                             </select>
-                            <br>
-                            <label><b>Project ID</b></label>
-                            <input class="form-control" type="text" id='projectid' placeholder="Enter Project ID"
-                                required><br>
+                            
+                            
+                          
+                    <span id='idproject1'>
+
+                    </span>
+                    <br>
                             <label><b>Developer ID</b></label>
                             <input class="form-control" type="text" id='developerid' placeholder="Enter Developer ID">
                             <br>
@@ -130,19 +137,34 @@
                             <textarea class="form-control" name="" id="description" cols="30" rows="4"></textarea>
                         </div>
                     </div>
-                    <button onclick='usendbug()' class="btn btn-primary">Update Bug</button>
+                     </form>
+                    <button onclick='usendbug()'  class="submitButton" >Update Bug</button>
+
+               
+                <br><br>
             </div>
-
-
-
+            <br><br>
         </div>
+        <br><br>
+    </div>
 
 
-        <footer class="container-fluid text-center">
-            <p>© Copyright BugHawk 2021</p>
-        </footer>
+    <footer class="container-fluid text-center">
+        <p>© Copyright BugHawk 2021</p>
+    </footer>
 
 </body>
-<script src="bugTasks.js"></script>
+
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("myNavbar").style.top = "0";
+        } else {
+            document.getElementById("myNavbar").style.top = "-50px";
+        }
+        prevScrollpos = currentScrollPos;
+    }</script>
 
 </html>
