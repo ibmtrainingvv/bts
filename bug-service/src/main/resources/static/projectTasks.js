@@ -1,5 +1,5 @@
 function createProject(){
-	fetch('/project', {
+	fetch('http://localhost:8082/project', {
 				method:'POST',
 				headers: {
 				      'Content-Type': 'application/json'
