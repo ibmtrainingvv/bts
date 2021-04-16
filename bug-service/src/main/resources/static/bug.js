@@ -31,7 +31,7 @@ function usendbug() {
 	let bugd = {};
 
 	let error = 0;
-	let errorText="";
+	let errorText = "";
 
 	let name = document.getElementById('bugname').value
 	if (name) {
@@ -171,7 +171,7 @@ function usendbug() {
 
 	let submitOn = document.getElementById('date').value
 	if (submitOn) {
-		bugd.submitOn = submitOn;
+		bugd.eta = submitOn;
 	}
 
 	let testerId = document.getElementById('testerid').value
@@ -203,11 +203,19 @@ function usendbug() {
 
 	if (error) {
 		if (error < 4)
-			return alert("Total error are : " + error + "\n"+ errorText);
+			return alert("Total error are : " + error + "\n" + errorText);
 		else {
-			return alert("total Errors are : " + error + "\n"+ errorText);
+			return alert("total Errors are : " + error + "\n" + errorText);
 		}
 		console.log((bugd));
+	}
+	function success(response) {
+		if (!response.ok) {
+			return (alert("error !!"));
+		}
+		(refresh(alert("bug updated")));
+
+
 	}
 
 
@@ -219,8 +227,92 @@ function usendbug() {
 		},
 		body: JSON.stringify(bugd)
 	})
-		.then(response => refresh(alert("bug updated!")));
+		.then(success);
 
+}
+
+function getFieldData() {
+	fetch('/bug/' + document.getElementById('id').value)
+		.then(response => response.json())
+		.then(json => {
+			let radr = JSON.stringify(json)
+			radr = JSON.parse(radr)
+			document.getElementById('bugname').value = "";
+
+			if (radr.name) {
+				document.getElementById('bugname').value = radr.name;
+			}
+			document.getElementById('bugpriority').value = "";
+
+			if (radr.priority) {
+				document.getElementById('bugpriority').value = radr.priority;
+			}
+			document.getElementById('status').value = '';
+
+			if (radr.status) {
+				document.getElementById('status').value = radr.status;
+			}
+			document.getElementById('date').value = '';
+
+			if (radr.eta) {
+				document.getElementById('date').value = radr.eta.split('T')[0];
+			}
+			document.getElementById('buildversion').value = '';
+			if (radr.buildVersion) {
+				document.getElementById('buildversion').value = radr.buildVersion;
+			}
+			document.getElementById('type').value = '';
+
+			if (radr.type) {
+				document.getElementById('type').value = radr.type;
+			}
+			document.getElementById('severity').value = '';
+
+			if (radr.severity) {
+				document.getElementById('severity').value = radr.severity;
+			}
+			document.getElementById('developerid').value = '';
+
+			if (radr.developerId) {
+				document.getElementById('developerid').value = radr.developerId;
+			}
+			document.getElementById('testerid').value = '';
+
+			if (radr.testerId) {
+				document.getElementById('testerid').value = radr.testerId;
+			}
+			document.getElementById('synopsis').value = '';
+
+			if (radr.synopsis) {
+				document.getElementById('synopsis').value = radr.synopsis;
+			}
+			document.getElementById('description').value = '';
+
+			if (radr.description) {
+				document.getElementById('description').value = radr.description;
+			}
+			document.getElementById('module').value = '';
+
+			if (radr.module) {
+				document.getElementById('module').value = radr.module;
+			}
+
+
+
+
+
+			if (document.getElementById('idselect')) {
+				getProject();
+			}
+			if (radr.projectId) {
+				document.getElementById('idproject').value = radr.projectId;
+			}
+		})
+		// .then(data => {
+		// 	if (document.getElementById('showbugdata')) {
+		// 		getBug()
+		// 	}
+		// })
 }
 
 function refresh() {
@@ -229,14 +321,15 @@ function refresh() {
 		.then(json => {
 			let radr = JSON.stringify(json)
 			radr = JSON.parse(radr)
-			let txt1 = "<select name=\"id\" id=\"id\" class=\"form-control\"   style=\"display: block;margin:0 auto;\">";
+			let txt1 = "<select onchange='getFieldData()' name=\"id\" id=\"id\" class=\"form-control\"   style=\"display: block;margin:0 auto;\">";
 			for (let i = 0; i < radr.length; i++) {
-				txt1 += "<option value='" + radr[i].id + "'>" + radr[i].id + "  " + radr[i].name + "</option>";
+				txt1 += "<option  value='" + radr[i].id + "'>" + radr[i].id + "  " + radr[i].name + "</option>";
 			}
 			txt1 += "</select>";
 			if (document.getElementById('idselect')) {
 				document.getElementById('idselect').innerHTML = txt1;
 				getProject();
+				getFieldData();
 			}
 		})
 		.then(data => {
@@ -252,7 +345,7 @@ function getProject() {
 		.then(json => {
 			let radr = JSON.stringify(json)
 			radr = JSON.parse(radr)
-			let txt2 = "<label><b>Project ID's <span style=\"color:red\">*</span></b></label><select name=\"idproject\" id=\"idproject\" class=\"form-control\"   style=\"margin: auto;\">";
+			let txt2 = "<label><b>Project ID <span style=\"color:red\">*</span></b></label><select name=\"idproject\" id=\"idproject\" class=\"form-control\"   style=\"margin: auto;\">";
 			for (let i = 0; i < radr.length; i++) {
 				txt2 += "<option value='" + radr[i].id + "'>" + radr[i].id + "  " + radr[i].name + "</option>";
 			}

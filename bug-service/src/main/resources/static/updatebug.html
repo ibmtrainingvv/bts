@@ -63,11 +63,11 @@
 
 
 
-                            <label><b>Bug Name </b></label>
+                            <label><b>Bug Name <span style="color:red">*</span></b></label>
 
                             <input class="form-control" type="text" placeholder="Enter Bug Name" id='bugname' required>
                             <br>
-                            <label><b>Bug Status</b></label>
+                            <label><b>Bug Status <span style="color:red">*</span></b></label>
                             <select class="form-control" id="status">
                                 <option value='NEW'>NEW</option>
                                 <option value='ASSIGNED'>ASSIGNED</option>
@@ -84,21 +84,21 @@
                                 <option value='NOT_A_BUG'>NOT_A_BUG</option>
                             </select>
                             <br>
-                            <label>Bug Priority</label>
+                            <label>Bug Priority <span style="color:red">*</span></label>
                             <select class="form-control" id='bugpriority'>
                                 <option value='HIGH'>HIGH</option>
                                 <option value='MEDIUM'>MEDIUM</option>
                                 <option value='LOW'>LOW</option>
                             </select><br>
-                            <label>Submitted On</label>
+                            <label>ETA</label>
                             <input class="form-control" id='date' type="date"><br>
-                            <label><b>Module</b></label>
+                            <label><b>Module <span style="color:red">*</span></b></label>
                             <input class="form-control" type="text" id='module' placeholder="Enter Module">
                             <br>
-                            <label><b>Build Version</b></label>
+                            <label><b>Build Version <span style="color:red">*</span></b></label>
                             <input class="form-control" type="text" id='buildversion' placeholder="Enter Build Version"
                                 required>
-                            <label><b>Type</b></label>
+                            <label><b>Type </b></label>
                             <select class="form-control" id='type'>
                                 <option value='LOGICAL'>LOGICAL</option>
                                 <option value='SYNTAX'>SYNTAX</option>
@@ -109,7 +109,7 @@
                             <br>
                         </div>
                         <div class="column form-group" id="column2" style="background-color: #f8f9fa;">
-                            <label><b>Severity</b></label>
+                            <label><b>Severity <span style="color:red">*</span></b></label>
                             <select class="form-control" id='severity'>
                                 <option value='LOW'>LOW</option>
                                 <option value='MINOR'>MINOR</option>
@@ -117,30 +117,30 @@
                                 <option value='CRITICAL'>CRITICAL</option>
                                 <option value='BLOCKER'>BLOCKER</option>
                             </select>
-                            
-                            
-                          
-                    <span id='idproject1'>
 
-                    </span>
-                    <br>
+
+
+                            <span id='idproject1'>
+
+                            </span>
+                            <br>
                             <label><b>Developer ID</b></label>
                             <input class="form-control" type="text" id='developerid' placeholder="Enter Developer ID">
                             <br>
                             <label><b>Tester ID</b></label>
                             <input class="form-control" type="text" id='testerid' placeholder="Enter Tester ID">
                             <br>
-                            <label><b>Synopsis</b></label>
+                            <label><b>Synopsis <span style="color:red">*</span></b></label>
                             <textarea class="form-control" name="" id="synopsis" cols="30" rows="2"></textarea>
                             <br>
-                            <label><b>Description</b></label>
+                            <label><b>Description <span style="color:red">*</span></b></label>
                             <textarea class="form-control" name="" id="description" cols="30" rows="4"></textarea>
                         </div>
                     </div>
-                     </form>
-                    <button onclick='usendbug()'  class="submitButton" >Update Bug</button>
+                </form>
+                <button onclick='usendbug()' class="submitButton">Update Bug</button>
 
-               
+
                 <br><br>
             </div>
             <br><br>
@@ -154,17 +154,5 @@
     </footer>
 
 </body>
-
-<script>
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function () {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementById("myNavbar").style.top = "0";
-        } else {
-            document.getElementById("myNavbar").style.top = "-50px";
-        }
-        prevScrollpos = currentScrollPos;
-    }</script>
 
 </html>
