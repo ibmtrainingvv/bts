@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to BugHawk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css1/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"> <img
+					src="bughawk.jpeg" alt="Image" id="logo">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="searchbug.html">Bugs</a></li>
+					<li><a href="searchproject.html">Projects</a></li>
+					<li class="active"><a href="searchemployee.html">Employees</a></li>
+					<li><a href="contactUs.html">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid text-center" style="background-color: #f8f9fa;">
+		<div class="row content">
+			<div class="col-sm-2 sidenav">
+				<br>
+				<button class="btn btn-link"
+					onclick="document.location='createemployee.html'">Create
+					Employee</button>
+				<button class="buttonStyling"
+					onclick="document.location='searchemployee.html'">Search
+					Employee</button>
+				<button class="buttonStyling"
+					onclick="document.location='updateemployee.html'">Update
+					Employee</button>
+			</div>
+
+			<div id="createEmployee" style="background-color: #f8f9fa;">
+				<div class="col-sm-10 text-left" id="column1" style="background-color: #f8f9fa;">
+					<form class="form-inline">
+						<br> <span id='idselect'></span> <br>
+						<div id="updateFields" class="column form-group">
+
+							<label><b>Employee Name </b></label> 
+							<input class="form-control" type="text" placeholder="Enter Employee Name" id='employeeName' required onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"> <br> 
+							<label><b>Project Id </b></label> 
+							<input type="text" class="form-control" placeholder="Enter Employee Project Id" id='projectId' required>
+							<br>
+						</div>
+						<div class="column form-group" id="column2" style="background-color: #f8f9fa;">
+						<label><b>Email Id </b></label> 
+						<input class="form-control" type="text" placeholder="Enter Email Id" id='emailId' required>
+						<br> 
+						<label><b>Mobile Number </b></label> 
+						<input type="text" class="form-control" placeholder="Enter Mobile Number" id='mobileNumber' maxlength = '10' required onkeypress="return (event.charCode > 31 && event.charCode < 48) || (event.charCode > 57)"> <br>
+						</div>
+					</form>
+				</div>
+				<button onclick='createEmployee()' class="submitButton">Create Employee</button>
+			</div>
+			<div id="toast">Employee created!</div>
+		</div>
+</div>
+		<footer class="container-fluid text-center">
+			<p>© Copyright BugHawk 2021</p>
+		</footer>
+</body>
+</html>
