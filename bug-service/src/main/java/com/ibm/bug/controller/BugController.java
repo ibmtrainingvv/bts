@@ -74,6 +74,11 @@ public class BugController {
 		System.out.println("hit");
 		return bugService.getBug(bugId);
 	}
+	@GetMapping("/bug/searchbyname/{name}")
+	Optional<Bug> getBugByName(@PathVariable("name") String name) {
+		System.out.println("hit");
+		return bugService.getBugByName(name);
+	}
 
 	/**
 	 * method to update bug details

@@ -101,4 +101,8 @@ public class BugService {
 	public BugRepository getBugRepository() {
 		return bugRepository;
 	}
+
+	public Optional<Bug> getBugByName(String name) {
+		return bugRepository.findBy;
+	}
 }
