@@ -28,8 +28,8 @@ public class BugService {
 		return savedbug.getId();
 	}
 
-	public Optional<Bug> getBug(String bugId) {
-		return bugRepository.findById(bugId);
+	public  List<Bug> getBug(String bugName) {
+		return bugRepository.findByName(bugName);
 	}
 
 	public List<Bug> getBugs() {
