@@ -1,0 +1,55 @@
+  
+  input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    resize: vertical;
+  }
+  
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  #contactUs{
+      width: 250px;
+      height: 250px;
+      border-radius: 40%;
+  }
+
+  h2{
+      text-decoration: underline;
+  }
+
+  #caption{
+      font-family: cursive;
+      font-style: italic ;
+      text-align: center;
+      font-size: large;
+  }  
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  
