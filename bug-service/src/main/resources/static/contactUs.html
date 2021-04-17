@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css2/style.css">
 </head>
 
 <body>
@@ -43,20 +44,30 @@
     <div class="container-fluid text-center" style="background-color: #f8f9fa;">
 
         <div class="row content">
-            <div class="col-sm-2 sidenav">
 
-            </div>
-
-            <div class="col-sm-8 text-left" style="background-color: #f8f9fa;">
-
-                <p class="jumbotron"> </p>
-
-            </div>
-            <div class="col-sm-2 sidenav">
-                <div class="well">
-                    <img src="scan-3963099_1280.jpg">
+            <div class="container">
+                <div>
+                  <h2>CONTACT US</h2>
                 </div>
-            </div>
+                <div class="row">
+                  <div class="column">
+                    <img src="contact-us-1024x968.jpg" id = "contactUs" alt="Contact Us">
+                    <br><br>
+                    <p id="caption">Have any questions? We would love to hear from you!</p>
+                  </div>
+                  <div class="column" style="text-align: left;">
+                    <form>
+                      <label>First Name</label>
+                      <input type="text" id="name" name="name" placeholder="Your name" required>
+                      <label>Email ID</label>
+                      <input type="text" id="emailId" name="emailId" placeholder="Your email address" required>
+                      <label>Subject</label>
+                      <textarea id="subject" name="subject" placeholder="Your feedback" rows = "3" cols = "8" required></textarea>
+                    </form>
+                    <button class="btn btn-success" onclick="alert('Thank you for your valuable response!')">Submit</button>
+                  </div>
+                </div>
+              </div>
         </div>
         <footer class="container-fluid text-center">
             <p>© Copyright BugHawk 2021</p>
