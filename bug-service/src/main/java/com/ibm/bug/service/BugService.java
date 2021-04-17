@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -35,6 +37,15 @@ public class BugService {
 	public List<Bug> getBugs() {
 		return bugRepository.findAll();
 	}
+	
+	 public ResponseEntity<Bug> sendError() {
+	        
+        
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.add("Responded", "MyController");
+	        
+	        return ResponseEntity.accepted().headers(headers).body(null);
+	    }
 
 	public void updateBug(Bug bug) {
 		STATUS status=bug.getStatus();
