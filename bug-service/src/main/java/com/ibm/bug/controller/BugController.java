@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,16 +67,15 @@ public class BugController {
 	 * 
 	 *              returns zero or matching bug
 	 */
-	
+
 	@GetMapping("/bug/{name}")
-	 List <Bug> getBug(@PathVariable("name") String bugName) {
-		System.out.println("hit");
+	List<Bug> getBug(@PathVariable("name") String bugName) {
 		return bugService.getBug(bugName);
 	}
-	@GetMapping("/bug/searchbyname/{name}")
-	Optional<Bug> getBugByName(@PathVariable("name") String name) {
-		System.out.println("hit");
-		return bugService.getBugByName(name);
+
+	@GetMapping("/bug/id/{id}")
+	Optional<Bug> getBugById(@PathVariable("id") String bugId) {
+		return bugService.getBugById(bugId);
 	}
 
 	/**
@@ -92,6 +90,6 @@ public class BugController {
 		validateBug(bindingResult);
 		logger.log(Level.INFO, bugId);
 		bug.setId(bugId);
-		bugService.updateBug(bug);
+		bugService.updateBugNew(bug);
 	}
 }
