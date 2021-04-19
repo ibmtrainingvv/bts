@@ -36,6 +36,10 @@ public class BugService {
 	public List<Bug> getBug(String bugName) {
 		return bugRepository.findByName(bugName);
 	}
+	
+	public List<Bug> getBugByStatus(STATUS bugStatus) {
+		return bugRepository.findByStatus(bugStatus);
+	}
 
 	public List<Bug> getBugs() {
 		return bugRepository.findAll();
