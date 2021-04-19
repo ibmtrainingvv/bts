@@ -14,7 +14,7 @@ import com.ibm.project.repo.ProjectRepository;
 class ProjectServiceTest {
 
 	@Test
-	void testCreateProject() { // test case for creation of project
+	void testCreateProject() { // test case for creating project
 		ProjectService projectService = new ProjectService();
 		ProjectRepository dummyRepo = new DummyProjectRepository();
 		projectService.setProjectRepository(dummyRepo);
