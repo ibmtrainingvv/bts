@@ -101,4 +101,8 @@ public class BugService {
 	public BugRepository getBugRepository() {
 		return bugRepository;
 	}
+
+	public List<Bug> getBugByStatus(STATUS status) {
+		return bugRepository.findByStatus(status);
+	}
 }

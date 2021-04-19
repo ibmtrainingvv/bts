@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 
 import com.ibm.bug.repo.BugRepository;
 import com.ibm.entity.Bug;
+import com.ibm.entity.STATUS;
 
 public class DummyBugRepository implements BugRepository {
 
@@ -155,6 +156,12 @@ public class DummyBugRepository implements BugRepository {
 		List<Bug> bugList = new ArrayList<Bug>();
 		bugList.add(bug);
 		return bugList;
+	}
+
+	@Override
+	public List<Bug> findByStatus(STATUS status) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
