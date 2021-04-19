@@ -11,9 +11,15 @@ public class SpringbootBugApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootBugApplication.class, args);
 	}
+
 	@Bean
 	RestTemplate restTemplate() {
 		return new RestTemplate();
+	}
+
+	@Bean
+	String string() {
+		return new String();
 	}
 
 }
