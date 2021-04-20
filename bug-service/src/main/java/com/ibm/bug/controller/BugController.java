@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.bug.service.BugService;
 import com.ibm.entity.Bug;
+import com.ibm.entity.STATUS;
 
 @RestController
 public class BugController {
@@ -71,6 +72,11 @@ public class BugController {
 	@GetMapping("/bug/{name}")
 	List<Bug> getBug(@PathVariable("name") String bugName) {
 		return bugService.getBug(bugName);
+	}
+	
+	@GetMapping("/bug/status/{name}")
+	List<Bug> getBug(@PathVariable("name") STATUS bugStatus) {
+		return bugService.getBugByStatus(bugStatus);
 	}
 
 	@GetMapping("/bug/id/{id}")

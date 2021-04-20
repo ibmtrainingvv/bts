@@ -26,6 +26,9 @@ public class BugService {
 
 	public String createBug(Bug bug) {
 		bug.setSubmitOn(new Date());
+		if (!(bug.getStatus() == STATUS.NEW || (bug.getStatus() == STATUS.ASSIGNED && bug.getDeveloperId() != null))) {
+			throw new StatusIllegalArgumentException("STATUS value can be only NEW or ASSIGNED with Developer ID");
+		}
 		Bug savedbug = bugRepository.save(bug);
 		// mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class,
 		// bug.getId());
@@ -35,6 +38,10 @@ public class BugService {
 
 	public List<Bug> getBug(String bugName) {
 		return bugRepository.findByName(bugName);
+	}
+
+	public List<Bug> getBugByStatus(STATUS bugStatus) {
+		return bugRepository.findByStatus(bugStatus);
 	}
 
 	public List<Bug> getBugs() {
