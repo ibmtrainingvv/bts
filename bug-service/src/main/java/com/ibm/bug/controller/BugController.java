@@ -72,7 +72,7 @@ public class BugController {
 	
 	@GetMapping("/bug/name/{name}")
 	 List <Bug> getBug(@PathVariable("name") String bugName) {
-		System.out.println("hit");
+//		System.out.println("hit");
 		return bugService.getBug(bugName);
 	}
 	
