@@ -20,7 +20,9 @@ public class StatusIllegalArgumentException extends IllegalArgumentException {
 
 	@ExceptionHandler(value = { StatusIllegalArgumentException.class, IllegalArgumentException.class })
 	public ResponseEntity<Object> handleconflict(Exception ex, WebRequest request) {
-		String errorMsg = ex.getLocalizedMessage();
+		String errorMsg= new String(" ");
+		errorMsg += ex.getLocalizedMessage();
+		
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add("error", errorMsg);
 		return new ResponseEntity<>(errorMsg, httpHeaders, HttpStatus.BAD_REQUEST);
