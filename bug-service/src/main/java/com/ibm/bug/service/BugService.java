@@ -37,7 +37,7 @@ public class BugService {
 	}
 
 	public List<Bug> getBug(String bugName) {
-		return bugRepository.findByName(bugName);
+		return bugRepository.findByNameIgnoreCase(bugName);
 	}
 
 	public List<Bug> getBugByStatus(STATUS bugStatus) {
@@ -47,7 +47,11 @@ public class BugService {
 	public List<Bug> getBugs() {
 		return bugRepository.findAll();
 	}
-
+	public List<Bug> findByStatusAndName(STATUS bugStatus,String bugName)
+	{
+		return bugRepository.findByStatusAndNameIgnoreCase(bugStatus, bugName);
+		
+	}
 	public void updateBugNew(Bug bug) {
 		STATUS status = bug.getStatus();
 		Optional<Bug> oldBug = bugRepository.findById(bug.getId());

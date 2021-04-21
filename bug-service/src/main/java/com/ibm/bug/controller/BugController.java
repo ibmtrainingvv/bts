@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -73,7 +75,7 @@ public class BugController {
 	List<Bug> getBug(@PathVariable("name") String bugName) {
 		return bugService.getBug(bugName);
 	}
-	
+
 	@GetMapping("/bug/status/{name}")
 	List<Bug> getBug(@PathVariable("name") STATUS bugStatus) {
 		return bugService.getBugByStatus(bugStatus);
@@ -82,6 +84,11 @@ public class BugController {
 	@GetMapping("/bug/id/{id}")
 	Optional<Bug> getBugById(@PathVariable("id") String bugId) {
 		return bugService.getBugById(bugId);
+	}
+
+	@RequestMapping("/bug/search")
+	List<Bug> findByStatusAndName(@RequestParam("status") STATUS bugStatus, @RequestParam("name") String name) {
+		return bugService.findByStatusAndName(bugStatus, name);
 	}
 
 	/**
