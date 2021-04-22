@@ -164,4 +164,8 @@ public class BugService {
 	public Optional<Bug> getBugById(String bugId) {
 		return bugRepository.findById(bugId);
 	}
+
+	public void deleteBug(String bugId) {
+		 bugRepository.deleteById(bugId);
+	}
 }
