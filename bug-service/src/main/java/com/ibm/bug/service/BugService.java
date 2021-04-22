@@ -29,7 +29,7 @@ public class BugService {
 	}
 
 	public  List<Bug> getBug(String bugName) {
-		return bugRepository.findByName(bugName);
+		return bugRepository.findByNameIgnoreCase(bugName);
 	}
 
 	public List<Bug> getBugs() {
@@ -104,5 +104,9 @@ public class BugService {
 
 	public List<Bug> getBugByStatus(STATUS status) {
 		return bugRepository.findByStatus(status);
+	}
+
+	public void deleteBug(String bugId) {
+		bugRepository.deleteById(bugId);
 	}
 }

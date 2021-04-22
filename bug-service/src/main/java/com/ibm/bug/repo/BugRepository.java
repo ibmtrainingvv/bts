@@ -10,7 +10,8 @@ import com.ibm.entity.STATUS;
 
 public interface BugRepository extends MongoRepository<Bug, String> {
 	@Query("{'name':?0}")
-	List<Bug> findByName(String bugName);
+	List<Bug> findByNameIgnoreCase(String bugName);
 
 	List<Bug> findByStatus(STATUS status);
+
 }
