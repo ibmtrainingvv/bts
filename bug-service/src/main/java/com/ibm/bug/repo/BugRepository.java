@@ -9,9 +9,12 @@ import com.ibm.entity.Bug;
 import com.ibm.entity.STATUS;
 
 public interface BugRepository extends MongoRepository<Bug, String> {
-	@Query("{'name':?0}")
-	List<Bug> findByNameIgnoreCase(String bugName);
+	@Query("{name: {$regex : ?0, '$options' :'i'}}")
+	List<Bug> findByNameIgnoreCase(String name);
 
 	List<Bug> findByStatus(STATUS status);
+
+	@Query("{status: ?0, name : {$regex : ?1, '$options' : 'i'}}")
+	List<Bug> findByStatusAndNameIgnoreCase(STATUS status, String name);
 
 }
