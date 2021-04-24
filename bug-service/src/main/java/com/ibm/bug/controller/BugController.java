@@ -11,16 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.bug.service.BugService;
 import com.ibm.entity.Bug;
+import com.ibm.entity.STATUS;
 
 @RestController
 public class BugController {
@@ -74,6 +78,24 @@ public class BugController {
 		System.out.println("hit");
 		return bugService.getBug(bugName);
 	}
+	
+	@GetMapping("/bug/status/{status}")
+	 List <Bug> getBugBySTATUS(@PathVariable("status")STATUS bugStatus) {
+		System.out.println("hit");
+		return bugService.getBugByStatus(bugStatus);
+	}
+	
+	@RequestMapping("/bug/search")
+	List<Bug> findByStatusAndName(@RequestParam("status") STATUS bugStatus, @RequestParam("name") String name) {
+		return bugService.findByStatusAndName(bugStatus, name);
+	}
+
+	@GetMapping("/bug/partialsearch/{name}")
+	List<Bug> getBugByPartialname(@PathVariable("name") String bugName){
+		return bugService.getBugByPartialName(bugName);
+		
+	}
+
 
 	/**
 	 * method to update bug details
@@ -89,4 +111,10 @@ public class BugController {
 		bug.setId(bugId);
 		bugService.updateBug(bug);
 	}
+	
+	@DeleteMapping("/bug/{id}")
+	void deleteBug(@PathVariable("id") String bugId) {
+		 bugService.deleteBug(bugId);
+	}	
+	  
 }

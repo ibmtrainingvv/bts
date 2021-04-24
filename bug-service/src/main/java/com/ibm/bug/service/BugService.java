@@ -29,12 +29,13 @@ public class BugService {
 	}
 
 	public  List<Bug> getBug(String bugName) {
-		return bugRepository.findByName(bugName);
+		return bugRepository.findByNameIgnoreCase(bugName);
 	}
 
 	public List<Bug> getBugs() {
 		return bugRepository.findAll();
 	}
+	
 
 	public void updateBug(Bug bug) {
 		STATUS status=bug.getStatus();
@@ -100,5 +101,23 @@ public class BugService {
 
 	public BugRepository getBugRepository() {
 		return bugRepository;
+	}
+
+	public List<Bug> getBugByStatus(STATUS bugStatus) {
+		// TODO Auto-generated method stub
+		return bugRepository.findByStatus(bugStatus);
+	}
+	
+	public List<Bug> getBugByPartialName(String bugName){
+		return bugRepository.findByNameIgnoreCaseLike(bugName);
+	}
+
+	public List<Bug> findByStatusAndName(STATUS bugStatus, String name) {
+		// TODO Auto-generated method stub
+		return bugRepository.findByStatusAndNameIgnoreCase(bugStatus, name);
+	}
+
+	public void deleteBug(String bugId) {
+		 bugRepository.deleteById(bugId);
 	}
 }
