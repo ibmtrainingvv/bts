@@ -6,6 +6,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.ibm.bug.service.StatusIllegalArgumentException;
+
 public class Bug {
 	private String id;
 	@NotNull
@@ -162,7 +164,7 @@ public class Bug {
 
 	public void setEta(Date eta) {
 		if (eta.compareTo(new Date()) < 0) {
-			throw new IllegalArgumentException("ETA cannot be past day");
+			throw new StatusIllegalArgumentException("ETA cannot be past day");
 		}
 		this.eta = eta;
 	}

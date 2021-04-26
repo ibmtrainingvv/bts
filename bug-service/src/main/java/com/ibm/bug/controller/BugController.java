@@ -72,16 +72,20 @@ public class BugController {
 	 * 
 	 *              returns zero or matching bug
 	 */
-	
-	@GetMapping("/bug/name/{name}")
-	 List <Bug> getBug(@PathVariable("name") String bugName) {
-//		System.out.println("hit");
+
+	@GetMapping("/bug/{name}")
+	List<Bug> getBug(@PathVariable("name") String bugName) {
 		return bugService.getBug(bugName);
 	}
 	
-	@GetMapping("/bug/status/{status}")
-	List<Bug> getBug(@PathVariable("status") STATUS status){
-		return bugService.getBugByStatus(status);
+	@GetMapping("/bug/status/{name}")
+	List<Bug> getBug(@PathVariable("name") STATUS bugStatus) {
+		return bugService.getBugByStatus(bugStatus);
+	}
+
+	@GetMapping("/bug/id/{id}")
+	Optional<Bug> getBugById(@PathVariable("id") String bugId) {
+		return bugService.getBugById(bugId);
 	}
 
 	/**
@@ -96,7 +100,7 @@ public class BugController {
 		validateBug(bindingResult);
 		logger.log(Level.INFO, bugId);
 		bug.setId(bugId);
-		bugService.updateBug(bug);
+		bugService.updateBugNew(bug);
 	}
 	
 	@DeleteMapping("/bug/{id}")

@@ -21,10 +21,6 @@ function getBug() {
 		})
 		.then(data => console.log(data));
 
-	console.log("hh");
-
-
-
 }
 
 function usendbug() {
@@ -238,7 +234,7 @@ function usendbug() {
 	}
 	function success(response) {
 		if (!response.ok) {
-			return (alert("error !!"));
+			return (alert("error !! "+response.headers.get('error')));
 		}
 		(refresh(alert("bug updated")));
 
@@ -261,7 +257,7 @@ function usendbug() {
 }
 
 function getFieldData() {
-	fetch('/bug/' + document.getElementById('id').value)
+	fetch('/bug/id/' + document.getElementById('id').value)
 		.then(response => response.json())
 		.then(json => {
 			let radr = JSON.stringify(json)
