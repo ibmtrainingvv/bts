@@ -91,6 +91,11 @@ public class BugController {
 	List<Bug> findByStatusAndName(@RequestParam("status") STATUS bugStatus, @RequestParam("name") String name) {
 		return bugService.findByStatusAndName(bugStatus, name);
 	}
+	
+	@GetMapping("/bug/partialsearch/{name}")
+	List<Bug> getBugByPartialName(@PathVariable("name") String bugName) {
+		return bugService.getBugByPartialName(bugName);
+	}
 
 	/**
 	 * method to update bug details

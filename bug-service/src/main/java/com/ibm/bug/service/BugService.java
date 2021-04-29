@@ -30,8 +30,7 @@ public class BugService {
 			throw new StatusIllegalArgumentException("STATUS value can be only NEW or ASSIGNED with Developer ID");
 		}
 		Bug savedbug = bugRepository.save(bug);
-		// mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class,
-		// bug.getId());
+		//mailTemplate.getForObject("http://localhost:8085/mail/{bugId}", Bug.class, savedbug.getId());
 
 		return savedbug.getId();
 	}
@@ -167,5 +166,9 @@ public class BugService {
 
 	public void deleteBug(String bugId) {
 		 bugRepository.deleteById(bugId);
+	}
+
+	public List<Bug> getBugByPartialName(String bugName) {
+		return bugRepository.findByNameIgnoreCaseLike(bugName);
 	}
 }

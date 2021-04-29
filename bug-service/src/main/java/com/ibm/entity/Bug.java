@@ -30,10 +30,10 @@ public class Bug {
 	private String testerId;
 	private String product;
 	@NotNull
-	@Size(min = 5, max = 50, message = "Synopsis should not be more than 50 characters.")
+	@Size(min = 10, max = 200, message = "Synopsis should not be more than 200 characters.")
 	@NotBlank
 	private String synopsis;
-	@Size(min = 5, max = 200, message = "Description should not be more than 200 characters.")
+	@Size(min = 10, max = 500, message = "Description should not be more than 500 characters.")
 	@NotBlank
 	private String description;
 	private Date eta;

@@ -18,8 +18,8 @@ public class StatusIllegalArgumentException extends IllegalArgumentException {
 		super(string);
 	}
 
-	@ExceptionHandler(value = { StatusIllegalArgumentException.class, IllegalArgumentException.class })
-	public ResponseEntity<Object> handleconflict(Exception ex, WebRequest request) {
+	@ExceptionHandler(value = { StatusIllegalArgumentException.class})
+	public ResponseEntity<Object> handleconflict(IllegalArgumentException ex, WebRequest request) {
 		String errorMsg= new String(" ");
 		errorMsg += ex.getLocalizedMessage();
 		
