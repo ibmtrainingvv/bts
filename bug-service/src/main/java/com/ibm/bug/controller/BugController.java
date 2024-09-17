@@ -10,11 +10,15 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -97,5 +101,15 @@ public class BugController {
 		logger.log(Level.INFO, bugId);
 		bug.setId(bugId);
 		bugService.updateBugNew(bug);
+	}
+	
+	@DeleteMapping("/bug/{id}")
+	void deleteBug(@PathVariable("id")String bugId) {
+		bugService.deleteBug(bugId);
+	}
+	
+	@RequestMapping("/bug/search")
+	List<Bug> getBugByNameAndStatus(@RequestParam("name")String bugName, @RequestParam("status")STATUS bugStatus) {
+		return bugService.getBugByNameAndStatus(bugName, bugStatus);
 	}
 }

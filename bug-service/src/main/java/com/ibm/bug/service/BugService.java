@@ -36,8 +36,8 @@ public class BugService {
 		return savedbug.getId();
 	}
 
-	public List<Bug> getBug(String bugName) {
-		return bugRepository.findByName(bugName);
+	public  List<Bug> getBug(String name) {
+		return bugRepository.findByNameIgnoreCase(name);
 	}
 
 	public List<Bug> getBugByStatus(STATUS bugStatus) {
@@ -157,7 +157,15 @@ public class BugService {
 		return bugRepository;
 	}
 
-	public Optional<Bug> getBugById(String bugId) {
-		return bugRepository.findById(bugId);
+	public List<Bug> getBugByStatus(STATUS status) {
+		return bugRepository.findByStatus(status);
+	}
+
+	public void deleteBug(String bugId) {
+		bugRepository.deleteById(bugId);
+	}
+
+	public List<Bug> getBugByNameAndStatus(String name, STATUS status) {
+		return bugRepository.findByStatusAndNameIgnoreCase(status, name);
 	}
 }
